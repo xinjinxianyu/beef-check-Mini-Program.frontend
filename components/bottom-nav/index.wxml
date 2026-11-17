@@ -1,0 +1,40 @@
+<view class="nav-space"></view>
+<view class="bottom-nav">
+  <view
+    wx:for="{{items}}"
+    wx:key="key"
+    class="nav-item {{active === item.key ? 'active' : ''}} {{item.key === 'detect' ? 'detect-slot' : ''}}"
+    data-item="{{item}}"
+    bindtap="navigate"
+  >
+    <view class="nav-glyph">
+      <view wx:if="{{item.key === 'home'}}" class="icon-home">
+        <view class="home-dot"></view>
+        <view class="home-dot"></view>
+        <view class="home-dot"></view>
+        <view class="home-dot"></view>
+      </view>
+      <view wx:elif="{{item.key === 'detect'}}" class="icon-scan">
+        <view class="scan-corner c1"></view>
+        <view class="scan-corner c2"></view>
+        <view class="scan-corner c3"></view>
+        <view class="scan-corner c4"></view>
+        <view class="scan-dot"></view>
+      </view>
+      <view wx:elif="{{item.key === 'assistant'}}" class="icon-chat">
+        <view class="chat-dot"></view>
+        <view class="chat-dot"></view>
+        <view class="chat-dot"></view>
+      </view>
+      <view wx:elif="{{item.key === 'wiki'}}" class="icon-book">
+        <view class="book-line"></view>
+        <view class="book-line short"></view>
+      </view>
+      <view wx:else class="icon-user">
+        <view class="user-head"></view>
+        <view class="user-body"></view>
+      </view>
+    </view>
+    <text class="nav-label">{{item.label}}</text>
+  </view>
+</view>

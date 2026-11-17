@@ -1,0 +1,100 @@
+<view class="page-shell profile-page">
+  <view class="profile-rings ring-one"></view>
+  <view class="profile-rings ring-two"></view>
+  <safe-top />
+  <view class="topbar">
+    <view class="brand">
+      <view class="brand-mark">我</view>
+      <view>
+        <view class="brand-name">个人中心</view>
+        <view class="brand-sub">MY BEEF NOTES</view>
+      </view>
+    </view>
+    <button wx:if="{{user}}" class="settings-text" bindtap="logout">退出</button>
+    <button wx:else class="settings-text" bindtap="goLogin">登录</button>
+  </view>
+
+  <view class="profile-hero">
+    <view class="profile-avatar-wrap">
+      <view class="avatar-orbit"></view>
+      <view class="profile-avatar">
+        <image
+          wx:if="{{user && user.avatarUrl}}"
+          class="profile-avatar-image"
+          src="{{user.avatarUrl}}"
+          mode="aspectFill"
+        />
+        <text wx:else class="profile-avatar-letter">{{user ? '牧' : '游'}}</text>
+      </view>
+      <view class="profile-seal">{{user ? '已登录' : '游客'}}</view>
+    </view>
+
+    <view class="profile-copy">
+      <view class="profile-name">{{user ? user.nickName : '游客体验中'}}</view>
+      <view class="profile-bio">{{user ? '认真记录每一次好肉' : '登录只用于保存头像昵称'}}</view>
+      <button wx:if="{{!user}}" class="profile-login" bindtap="goLogin">微信快捷登录 →</button>
+    </view>
+  </view>
+
+  <view class="profile-stats">
+    <view class="profile-stat">
+      <view class="profile-stat-value">{{recognizedCount}}</view>
+      <view class="profile-stat-label">识别次数</view>
+    </view>
+    <view class="stat-line"></view>
+    <view class="profile-stat">
+      <view class="profile-stat-value">{{modelReady ? '已就绪' : '待加载'}}</view>
+      <view class="profile-stat-label">本地识别引擎</view>
+    </view>
+    <view class="stat-line"></view>
+    <view class="profile-stat">
+      <view class="profile-stat-value">仅本机</view>
+      <view class="profile-stat-label">记录存储</view>
+    </view>
+  </view>
+
+  <view class="section-title-row">
+    <view>
+      <view class="eyebrow">SETTINGS</view>
+      <view class="section-title">我的服务</view>
+    </view>
+  </view>
+
+  <view class="menu-card">
+    <view
+      wx:for="{{menus}}"
+      wx:key="key"
+      class="menu-row"
+      data-key="{{item.key}}"
+      bindtap="openMenu"
+    >
+      <view class="menu-icon">{{item.icon}}</view>
+      <view class="menu-copy">
+        <view class="menu-title">{{item.title}}</view>
+        <view class="menu-sub">{{item.subtitle}}</view>
+      </view>
+      <view class="menu-arrow">›</view>
+    </view>
+  </view>
+
+  <view class="model-card">
+    <view class="model-top">
+      <view class="model-chip">LOCAL AI</view>
+      <view class="model-status">
+        <view class="model-status-dot"></view>
+        {{modelReady ? '模型已缓存' : '首次使用需加载'}}
+      </view>
+    </view>
+    <view class="model-title">端侧识别引擎</view>
+    <view class="model-version">{{modelVersion}} · 初次加载{{modelSizeLabel}}</view>
+    <view class="model-rule"></view>
+    <view class="model-note">图片在设备内完成处理，识别过程不上传原图。</view>
+  </view>
+
+  <view class="profile-footer">
+    <view class="profile-footer-mark">识牛 · BEEF ATLAS</view>
+    <view class="profile-footer-copy">把每一口牛肉，看得更明白。</view>
+  </view>
+
+  <bottom-nav active="profile" />
+</view>

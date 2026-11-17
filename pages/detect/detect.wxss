@@ -1,0 +1,709 @@
+.detect-page {
+  background:
+    radial-gradient(circle at 10% 8%, rgba(217, 84, 61, 0.09), transparent 24%),
+    #f7f3e9;
+}
+
+.detect-glow {
+  position: absolute;
+  top: 170rpx;
+  right: -220rpx;
+  width: 520rpx;
+  height: 520rpx;
+  border: 1rpx solid rgba(24, 56, 46, 0.05);
+  border-radius: 50%;
+}
+
+.help-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 66rpx;
+  height: 66rpx;
+  border: 1rpx solid rgba(24, 56, 46, 0.1);
+  border-radius: 50%;
+  background: rgba(255, 253, 247, 0.64);
+  color: #6f7d74;
+  font-family: "Songti SC", serif;
+  font-size: 27rpx;
+}
+
+.capture-view {
+  padding-top: 38rpx;
+}
+
+.capture-title {
+  margin-top: 14rpx;
+  font-family: "Songti SC", serif;
+  font-size: 58rpx;
+  font-weight: 700;
+  letter-spacing: -1rpx;
+}
+
+.capture-description {
+  width: 590rpx;
+  margin-top: 12rpx;
+  color: #6c7a71;
+  font-size: 24rpx;
+  line-height: 1.7;
+}
+
+.camera-frame {
+  position: relative;
+  height: 480rpx;
+  margin-top: 34rpx;
+  overflow: hidden;
+  border-radius: 34rpx;
+  background:
+    radial-gradient(circle at center, rgba(255, 255, 255, 0.1), transparent 42%),
+    #18382e;
+  box-shadow: 0 26rpx 60rpx rgba(24, 56, 46, 0.2);
+}
+
+.camera-frame-pressed {
+  opacity: 0.9;
+  transform: scale(0.992);
+}
+
+.frame-grid {
+  position: absolute;
+  inset: 0;
+  opacity: 0.16;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.22) 1rpx, transparent 1rpx),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.22) 1rpx, transparent 1rpx);
+  background-size: 120rpx 120rpx;
+}
+
+.frame-corner {
+  position: absolute;
+  z-index: 3;
+  width: 50rpx;
+  height: 50rpx;
+  border-color: #f2c85b;
+  border-style: solid;
+}
+
+.fc-tl {
+  top: 28rpx;
+  left: 28rpx;
+  border-width: 3rpx 0 0 3rpx;
+  border-radius: 8rpx 0 0;
+}
+
+.fc-tr {
+  top: 28rpx;
+  right: 28rpx;
+  border-width: 3rpx 3rpx 0 0;
+  border-radius: 0 8rpx 0 0;
+}
+
+.fc-bl {
+  bottom: 28rpx;
+  left: 28rpx;
+  border-width: 0 0 3rpx 3rpx;
+  border-radius: 0 0 0 8rpx;
+}
+
+.fc-br {
+  right: 28rpx;
+  bottom: 28rpx;
+  border-width: 0 3rpx 3rpx 0;
+  border-radius: 0 0 8rpx;
+}
+
+.camera-symbol {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 190rpx;
+  height: 160rpx;
+  transform: translate(-50%, -60%);
+}
+
+.camera-top {
+  position: absolute;
+  top: 16rpx;
+  left: 50%;
+  width: 74rpx;
+  height: 32rpx;
+  border-radius: 12rpx 12rpx 0 0;
+  background: #f2c85b;
+  transform: translateX(-50%);
+}
+
+.camera-body {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 128rpx;
+  border: 3rpx solid #f2c85b;
+  border-radius: 22rpx;
+  background: rgba(242, 200, 91, 0.06);
+}
+
+.camera-lens {
+  position: absolute;
+  top: 24rpx;
+  left: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 78rpx;
+  height: 78rpx;
+  border: 3rpx solid #f2c85b;
+  border-radius: 50%;
+  transform: translateX(-50%);
+}
+
+.lens-inner {
+  width: 42rpx;
+  height: 42rpx;
+  border-radius: 50%;
+  background: rgba(242, 200, 91, 0.24);
+}
+
+.camera-flash {
+  position: absolute;
+  top: 18rpx;
+  right: 18rpx;
+  width: 12rpx;
+  height: 12rpx;
+  border-radius: 50%;
+  background: #f2c85b;
+}
+
+.frame-hint {
+  position: absolute;
+  right: 0;
+  bottom: 32rpx;
+  left: 0;
+  color: rgba(255, 253, 247, 0.44);
+  font-size: 17rpx;
+  letter-spacing: 8rpx;
+  text-align: center;
+}
+
+.frame-scan {
+  position: absolute;
+  top: 80rpx;
+  right: 40rpx;
+  left: 40rpx;
+  height: 2rpx;
+  background: linear-gradient(90deg, transparent, rgba(242, 200, 91, 0.9), transparent);
+  box-shadow: 0 0 20rpx rgba(242, 200, 91, 0.42);
+  animation: frameScan 3.4s ease-in-out infinite;
+}
+
+@keyframes frameScan {
+  0%,
+  100% {
+    opacity: 0.2;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(280rpx);
+  }
+}
+
+.photo-advice {
+  display: flex;
+  align-items: center;
+  padding: 24rpx 4rpx 22rpx;
+}
+
+.advice-item {
+  display: flex;
+  flex: 1;
+  align-items: flex-start;
+  gap: 13rpx;
+}
+
+.advice-index {
+  padding-top: 3rpx;
+  color: #d9543d;
+  font-family: "Songti SC", serif;
+  font-size: 19rpx;
+  font-weight: 700;
+}
+
+.advice-title {
+  font-size: 22rpx;
+  font-weight: 600;
+}
+
+.advice-copy {
+  margin-top: 2rpx;
+  color: #8b958e;
+  font-size: 18rpx;
+}
+
+.advice-divider {
+  width: 1rpx;
+  height: 48rpx;
+  margin: 0 22rpx;
+  background: rgba(24, 56, 46, 0.09);
+}
+
+.capture-actions {
+  margin-top: 12rpx;
+}
+
+.shutter-button {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 108rpx;
+  padding: 0 24rpx;
+  border-radius: 30rpx;
+  background: #18382e;
+  color: #fffdf7;
+  text-align: left;
+  box-shadow: 0 18rpx 38rpx rgba(24, 56, 46, 0.18);
+}
+
+.shutter-ring {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 58rpx;
+  height: 58rpx;
+  margin-right: 18rpx;
+  border: 2rpx solid rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+}
+
+.shutter-core {
+  width: 38rpx;
+  height: 38rpx;
+  border-radius: 50%;
+  background: #d9543d;
+}
+
+.shutter-title {
+  font-size: 27rpx;
+  font-weight: 600;
+}
+
+.shutter-sub {
+  color: rgba(255, 253, 247, 0.48);
+  font-size: 19rpx;
+}
+
+.shutter-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50rpx;
+  height: 50rpx;
+  margin-left: auto;
+  border-radius: 50%;
+  background: #f2c85b;
+  color: #18382e;
+}
+
+.album-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12rpx;
+  width: 100%;
+  height: 88rpx;
+  margin-top: 16rpx;
+  border: 1rpx solid rgba(24, 56, 46, 0.1);
+  border-radius: 28rpx;
+  background: rgba(255, 253, 247, 0.72);
+  color: #354d42;
+  font-size: 24rpx;
+}
+
+.album-icon {
+  position: relative;
+  width: 32rpx;
+  height: 28rpx;
+  overflow: hidden;
+  border: 2rpx solid #d9543d;
+  border-radius: 5rpx;
+}
+
+.album-sun {
+  position: absolute;
+  top: 4rpx;
+  right: 5rpx;
+  width: 6rpx;
+  height: 6rpx;
+  border-radius: 50%;
+  background: #d9543d;
+}
+
+.album-mountain {
+  position: absolute;
+  bottom: -11rpx;
+  left: 1rpx;
+  width: 25rpx;
+  height: 25rpx;
+  border: 2rpx solid #d9543d;
+  transform: rotate(45deg);
+}
+
+.privacy-note {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12rpx;
+  margin: 30rpx 0 10rpx;
+  color: #78867d;
+}
+
+.shield-mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38rpx;
+  height: 38rpx;
+  color: #6e8f73;
+  font-size: 28rpx;
+}
+
+.privacy-title {
+  color: #52665b;
+  font-size: 20rpx;
+}
+
+.privacy-copy {
+  font-size: 17rpx;
+}
+
+.result-flow {
+  padding-top: 18rpx;
+}
+
+.photo-stage {
+  position: relative;
+  height: 610rpx;
+  overflow: hidden;
+  border-radius: 34rpx;
+  background: #142d25;
+  box-shadow: 0 26rpx 60rpx rgba(24, 56, 46, 0.2);
+}
+
+.photo-preview,
+.detect-canvas {
+  width: 100%;
+  height: 100%;
+}
+
+.stage-top {
+  position: absolute;
+  top: 20rpx;
+  right: 20rpx;
+  left: 20rpx;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.stage-chip {
+  display: flex;
+  align-items: center;
+  gap: 9rpx;
+  height: 48rpx;
+  padding: 0 16rpx;
+  border: 1rpx solid rgba(255, 255, 255, 0.14);
+  border-radius: 999rpx;
+  background: rgba(15, 34, 27, 0.76);
+  color: #fffdf7;
+  font-size: 19rpx;
+  backdrop-filter: blur(10rpx);
+}
+
+.stage-dot {
+  width: 9rpx;
+  height: 9rpx;
+  border-radius: 50%;
+  background: #f2c85b;
+}
+
+.stage-reset {
+  height: 48rpx;
+  padding: 0 18rpx;
+  border-radius: 999rpx;
+  background: rgba(15, 34, 27, 0.73);
+  color: rgba(255, 253, 247, 0.85);
+  font-size: 19rpx;
+  line-height: 48rpx;
+}
+
+.loading-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(15, 34, 27, 0.82);
+  color: #fffdf7;
+  backdrop-filter: blur(8rpx);
+}
+
+.loader-orbit {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 132rpx;
+  height: 132rpx;
+  margin-bottom: 26rpx;
+  border: 2rpx solid rgba(242, 200, 91, 0.18);
+  border-radius: 50%;
+}
+
+.loader-orbit::before {
+  position: absolute;
+  top: -2rpx;
+  left: -2rpx;
+  width: 132rpx;
+  height: 132rpx;
+  border: 2rpx solid transparent;
+  border-top-color: #f2c85b;
+  border-radius: 50%;
+  content: "";
+  animation: orbit 1.1s linear infinite;
+}
+
+@keyframes orbit {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loader-orbit-inner {
+  position: absolute;
+  width: 96rpx;
+  height: 96rpx;
+  border: 1rpx solid rgba(255, 255, 255, 0.08);
+  border-radius: 50%;
+}
+
+.loader-percent {
+  font-family: "Songti SC", serif;
+  font-size: 31rpx;
+  font-weight: 700;
+}
+
+.loader-title {
+  font-size: 27rpx;
+  font-weight: 600;
+}
+
+.loader-tip {
+  margin-top: 8rpx;
+  color: rgba(255, 253, 247, 0.5);
+  font-size: 18rpx;
+}
+
+.progress-track {
+  width: 340rpx;
+  height: 5rpx;
+  margin-top: 26rpx;
+  overflow: hidden;
+  border-radius: 5rpx;
+  background: rgba(255, 255, 255, 0.13);
+}
+
+.progress-value {
+  height: 100%;
+  border-radius: 5rpx;
+  background: #f2c85b;
+  transition: width 180ms ease;
+}
+
+.canvas-caption {
+  position: absolute;
+  right: 20rpx;
+  bottom: 20rpx;
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+  height: 44rpx;
+  padding: 0 15rpx;
+  border-radius: 12rpx;
+  background: rgba(15, 34, 27, 0.82);
+  color: rgba(255, 253, 247, 0.8);
+  font-size: 18rpx;
+}
+
+.caption-dot {
+  width: 8rpx;
+  height: 8rpx;
+  border-radius: 50%;
+  background: #f2c85b;
+}
+
+.result-card {
+  margin-top: 22rpx;
+  padding: 30rpx;
+}
+
+.result-card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.result-kicker {
+  color: #869188;
+  font-size: 18rpx;
+  letter-spacing: 1rpx;
+}
+
+.result-name-row {
+  display: flex;
+  align-items: center;
+  gap: 14rpx;
+  margin-top: 3rpx;
+}
+
+.result-name {
+  font-family: "Songti SC", serif;
+  font-size: 50rpx;
+  font-weight: 700;
+}
+
+.match-pill {
+  padding: 5rpx 12rpx;
+  border-radius: 999rpx;
+  background: #fae7e1;
+  color: #b6422f;
+  font-size: 18rpx;
+}
+
+.fresh-score {
+  text-align: right;
+}
+
+.fresh-score-value {
+  color: #d9543d;
+  font-family: "Songti SC", serif;
+  font-size: 46rpx;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.fresh-score-value::after {
+  font-size: 18rpx;
+  content: " %";
+}
+
+.fresh-score-label {
+  margin-top: 4rpx;
+  color: #7c8981;
+  font-size: 18rpx;
+}
+
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10rpx;
+  margin-top: 20rpx;
+}
+
+.reason-panel {
+  margin-top: 24rpx;
+  padding: 22rpx;
+  border-radius: 22rpx;
+  background: #f6f2e8;
+}
+
+.reason-title {
+  display: flex;
+  align-items: center;
+  gap: 10rpx;
+  margin-bottom: 12rpx;
+  font-size: 21rpx;
+  font-weight: 600;
+}
+
+.reason-mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38rpx;
+  height: 28rpx;
+  border-radius: 7rpx;
+  background: #18382e;
+  color: #f2c85b;
+  font-size: 14rpx;
+  font-weight: 700;
+}
+
+.reason-line {
+  display: flex;
+  align-items: center;
+  gap: 10rpx;
+  margin-top: 8rpx;
+  color: #65736b;
+  font-size: 20rpx;
+}
+
+.reason-bullet {
+  width: 5rpx;
+  height: 5rpx;
+  border-radius: 50%;
+  background: #d9543d;
+}
+
+.result-note {
+  margin-top: 20rpx;
+  color: #637169;
+  font-size: 21rpx;
+  line-height: 1.7;
+}
+
+.result-button {
+  margin-top: 24rpx;
+}
+
+.quick-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 22rpx;
+  color: #617067;
+  font-size: 21rpx;
+}
+
+.quick-links text {
+  margin-left: 5rpx;
+}
+
+.link-divider {
+  width: 1rpx;
+  height: 22rpx;
+  margin: 0 26rpx;
+  background: rgba(24, 56, 46, 0.14);
+}
+
+.processing-copy {
+  padding: 34rpx 0;
+  text-align: center;
+}
+
+.processing-title {
+  font-family: "Songti SC", serif;
+  font-size: 28rpx;
+  font-weight: 700;
+}
+
+.processing-note {
+  margin-top: 6rpx;
+  color: #879188;
+  font-size: 20rpx;
+}

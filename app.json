@@ -1,0 +1,24 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/detect/detect",
+    "pages/result/result",
+    "pages/assistant/assistant",
+    "pages/wiki/wiki",
+    "pages/history/history",
+    "pages/login/login",
+    "pages/profile/profile"
+  ],
+  "window": {
+    "navigationStyle": "custom",
+    "backgroundColor": "#F7F3E9",
+    "backgroundTextStyle": "dark",
+    "enablePullDownRefresh": false
+  },
+  "style": "v2",
+  "usingComponents": {
+    "safe-top": "/components/safe-top/index"
+  },
+  "lazyCodeLoading": "requiredComponents",
+  "sitemapLocation": "sitemap.json"
+}

@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "bottom-nav": "/components/bottom-nav/index"
+  },
+  "navigationBarTitleText": "牛肉百科"
+}

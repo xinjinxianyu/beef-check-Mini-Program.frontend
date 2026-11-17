@@ -1,0 +1,15 @@
+const assert = require('assert')
+const fs = require('fs')
+const path = require('path')
+const env = require('../config/env')
+
+assert.strictEqual(env.FEEDBACK_DELIVERY_MODE, 'cloud')
+assert.strictEqual(env.FEEDBACK_CLOUD_FUNCTION, 'sendFeedbackEmail')
+assert.strictEqual(env.FEEDBACK_EMAIL, '2960453506@qq.com')
+const functionDir = path.resolve(__dirname, '../cloudfunctions/sendFeedbackEmail')
+assert(fs.existsSync(path.join(functionDir, 'index.js')))
+assert(fs.existsSync(path.join(functionDir, 'package.json')))
+const config = require('../project.config.json')
+assert.strictEqual(config.cloudfunctionRoot, 'cloudfunctions/')
+
+console.log('Feedback email check passed.')

@@ -1,0 +1,93 @@
+<view class="page-shell no-nav login-page">
+  <view class="login-orbit orbit-one"></view>
+  <view class="login-orbit orbit-two"></view>
+  <safe-top />
+  <view class="topbar">
+    <button class="back-button" bindtap="goBack">‹</button>
+    <view class="brand small-brand">
+      <view class="brand-mark">牧</view>
+      <view class="brand-name">识牛</view>
+    </view>
+    <view class="topbar-spacer"></view>
+  </view>
+
+  <view class="login-visual fade-in">
+    <view class="seal">
+      <view class="seal-orbit"></view>
+      <view class="seal-core">
+        <view class="cow-horns h1"></view>
+        <view class="cow-horns h2"></view>
+        <view class="seal-face">
+          <view class="seal-eye e1"></view>
+          <view class="seal-eye e2"></view>
+          <view class="seal-nose"></view>
+        </view>
+      </view>
+      <view class="seal-star star-a">✦</view>
+      <view class="seal-star star-b">·</view>
+    </view>
+  </view>
+
+  <view class="login-copy fade-in">
+    <view class="eyebrow">KEEP YOUR BEEF NOTES</view>
+    <view class="login-title">
+      <view>登录后，</view>
+      <view>个人资料更完整。</view>
+    </view>
+    <view class="login-description">
+      保存头像昵称用于个人中心展示。识别记录始终只保存在当前设备。
+    </view>
+  </view>
+
+  <view class="benefit-list">
+    <view class="benefit-item">
+      <view class="benefit-number">01</view>
+      <view class="benefit-content">
+        <view class="benefit-title">保存个人头像昵称</view>
+        <view class="benefit-sub">让个人中心展示你的微信资料</view>
+      </view>
+      <view class="benefit-mark">人</view>
+    </view>
+    <view class="benefit-item">
+      <view class="benefit-number">02</view>
+      <view class="benefit-content">
+        <view class="benefit-title">记录不离开设备</view>
+        <view class="benefit-sub">识别历史不会上传到云端</view>
+      </view>
+      <view class="benefit-mark">本</view>
+    </view>
+  </view>
+
+  <view class="login-primary-zone">
+    <button
+      class="wechat-button"
+      loading="{{loading}}"
+      disabled="{{loading}}"
+      bindtap="handleLogin"
+    >
+      <view class="wechat-symbol">微</view>
+      <view class="wechat-copy">
+        <view class="wechat-title">微信快捷登录</view>
+        <view class="wechat-sub">获取头像昵称，仅用于个人展示</view>
+      </view>
+      <view class="wechat-arrow">→</view>
+    </button>
+
+    <view class="privacy-check" bindtap="togglePrivacy">
+      <view class="check-box {{privacyAccepted ? 'checked' : ''}}">
+        {{privacyAccepted ? '✓' : ''}}
+      </view>
+      <view class="privacy-copy">
+        我已阅读并同意
+        <text class="privacy-link" catchtap="showPrivacy">《隐私说明》</text>
+      </view>
+    </view>
+
+    <button class="guest-button" bindtap="continueAsGuest">暂不登录，继续以游客身份使用</button>
+  </view>
+
+  <view class="free-note">
+    <view class="free-dot"></view>
+    不登录也能识别与查看本地记录
+  </view>
+</view>

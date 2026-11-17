@@ -1,0 +1,302 @@
+.profile-page {
+  background:
+    radial-gradient(circle at 100% 3%, rgba(242, 200, 91, 0.19), transparent 22%),
+    #f7f3e9;
+}
+
+.profile-rings {
+  position: absolute;
+  border: 1rpx solid rgba(24, 56, 46, 0.05);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.ring-one {
+  top: 140rpx;
+  right: -210rpx;
+  width: 500rpx;
+  height: 500rpx;
+}
+
+.ring-two {
+  top: 230rpx;
+  right: -120rpx;
+  width: 320rpx;
+  height: 320rpx;
+}
+
+.settings-text {
+  height: 52rpx;
+  padding: 0 16rpx;
+  border: 1rpx solid rgba(24, 56, 46, 0.08);
+  border-radius: 999rpx;
+  background: rgba(255, 253, 247, 0.64);
+  color: #69776e;
+  font-size: 18rpx;
+  line-height: 52rpx;
+}
+
+.profile-hero {
+  display: flex;
+  align-items: center;
+  padding: 40rpx 4rpx 34rpx;
+}
+
+.profile-avatar-wrap {
+  position: relative;
+  flex: 0 0 166rpx;
+  width: 166rpx;
+  height: 166rpx;
+}
+
+.avatar-orbit {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 160rpx;
+  height: 160rpx;
+  border: 1rpx dashed rgba(24, 56, 46, 0.2);
+  border-radius: 50%;
+}
+
+.profile-avatar {
+  position: absolute;
+  top: 16rpx;
+  left: 16rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 128rpx;
+  height: 128rpx;
+  overflow: hidden;
+  border: 7rpx solid #fffdf7;
+  border-radius: 50%;
+  background: #18382e;
+  box-shadow: 0 14rpx 30rpx rgba(24, 56, 46, 0.15);
+}
+
+.profile-avatar-image {
+  width: 100%;
+  height: 100%;
+}
+
+.profile-avatar-letter {
+  color: #f2c85b;
+  font-family: "Songti SC", serif;
+  font-size: 45rpx;
+  font-weight: 700;
+}
+
+.profile-seal {
+  position: absolute;
+  right: 0;
+  bottom: 12rpx;
+  padding: 4rpx 10rpx;
+  border: 2rpx solid #f7f3e9;
+  border-radius: 999rpx;
+  background: #d9543d;
+  color: #fffdf7;
+  font-size: 15rpx;
+}
+
+.profile-copy {
+  flex: 1;
+  margin-left: 24rpx;
+}
+
+.profile-name {
+  font-family: "Songti SC", serif;
+  font-size: 43rpx;
+  font-weight: 700;
+}
+
+.profile-bio {
+  margin-top: 4rpx;
+  color: #859088;
+  font-size: 20rpx;
+}
+
+.profile-login {
+  height: 54rpx;
+  margin-top: 14rpx;
+  padding: 0 17rpx;
+  border-radius: 15rpx;
+  background: #18382e;
+  color: #fffdf7;
+  font-size: 18rpx;
+  line-height: 54rpx;
+}
+
+.profile-stats {
+  display: flex;
+  align-items: stretch;
+  padding: 24rpx 10rpx;
+  border-radius: 28rpx;
+  background: #18382e;
+  color: #fffdf7;
+  box-shadow: 0 18rpx 42rpx rgba(24, 56, 46, 0.16);
+}
+
+.profile-stat {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-stat-value {
+  color: #f2c85b;
+  font-family: "Songti SC", serif;
+  font-size: 30rpx;
+  font-weight: 700;
+}
+
+.profile-stat-label {
+  margin-top: 5rpx;
+  color: rgba(255, 253, 247, 0.44);
+  font-size: 16rpx;
+}
+
+.stat-line {
+  width: 1rpx;
+  margin: 4rpx 0;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.menu-card {
+  overflow: hidden;
+  border: 1rpx solid rgba(24, 56, 46, 0.07);
+  border-radius: 28rpx;
+  background: #fffdf7;
+}
+
+.menu-row {
+  display: flex;
+  align-items: center;
+  min-height: 100rpx;
+  margin: 0 22rpx;
+  border-bottom: 1rpx solid rgba(24, 56, 46, 0.07);
+}
+
+.menu-row:last-child {
+  border-bottom: 0;
+}
+
+.menu-icon {
+  display: flex;
+  flex: 0 0 48rpx;
+  align-items: center;
+  justify-content: center;
+  width: 48rpx;
+  height: 48rpx;
+  margin-right: 14rpx;
+  border-radius: 14rpx;
+  background: #f1ede4;
+  color: #d9543d;
+  font-family: "Songti SC", serif;
+  font-size: 20rpx;
+}
+
+.menu-copy {
+  flex: 1;
+}
+
+.menu-title {
+  color: #354d40;
+  font-size: 22rpx;
+}
+
+.menu-sub {
+  margin-top: 2rpx;
+  color: #939b95;
+  font-size: 17rpx;
+}
+
+.menu-arrow {
+  color: #a6ada7;
+  font-size: 30rpx;
+}
+
+.model-card {
+  margin-top: 18rpx;
+  padding: 24rpx;
+  border-radius: 28rpx;
+  background: #fffdf7;
+  border: 1rpx solid rgba(24, 56, 46, 0.07);
+}
+
+.model-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.model-chip {
+  padding: 4rpx 10rpx;
+  border-radius: 6rpx;
+  background: #18382e;
+  color: #f2c85b;
+  font-size: 14rpx;
+  font-weight: 700;
+  letter-spacing: 1rpx;
+}
+
+.model-status {
+  display: flex;
+  align-items: center;
+  gap: 7rpx;
+  color: #7d8c81;
+  font-size: 17rpx;
+}
+
+.model-status-dot {
+  width: 7rpx;
+  height: 7rpx;
+  border-radius: 50%;
+  background: #7f9f74;
+}
+
+.model-title {
+  margin-top: 16rpx;
+  font-family: "Songti SC", serif;
+  font-size: 31rpx;
+  font-weight: 700;
+}
+
+.model-version {
+  margin-top: 3rpx;
+  color: #89938c;
+  font-size: 17rpx;
+}
+
+.model-rule {
+  height: 1rpx;
+  margin: 18rpx 0 14rpx;
+  background: rgba(24, 56, 46, 0.07);
+}
+
+.model-note {
+  color: #65756a;
+  font-size: 19rpx;
+}
+
+.profile-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 38rpx;
+}
+
+.profile-footer-mark {
+  color: #87938b;
+  font-family: "Songti SC", serif;
+  font-size: 18rpx;
+  letter-spacing: 2rpx;
+}
+
+.profile-footer-copy {
+  margin-top: 5rpx;
+  color: #a6ada7;
+  font-size: 16rpx;
+}

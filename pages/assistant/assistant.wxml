@@ -1,0 +1,160 @@
+<view class="page-shell assistant-page">
+  <view class="assistant-glow"></view>
+  <safe-top />
+  <view class="topbar">
+    <button class="back-button" bindtap="goBack">‹</button>
+    <view class="topbar-title">牛肉做法助手</view>
+    <view class="ai-status">
+      <view class="ai-status-dot"></view>
+      AI
+    </view>
+  </view>
+
+  <view class="assistant-heading">
+    <view class="assistant-heading-top">
+      <view class="assistant-portrait">
+        <view class="portrait-orbit"></view>
+        <view class="portrait-core">问</view>
+      </view>
+      <view class="heading-copy">
+        <view class="eyebrow">BEEF COOKING ASSISTANT</view>
+        <view class="assistant-title">把部位，变成做法。</view>
+      </view>
+    </view>
+    <view class="assistant-intro">
+      围绕最近一次识别结果回答。可以快捷提问，也可以自由输入处理、做法、熟度和保存问题。
+    </view>
+  </view>
+
+  <view class="context-card">
+    <view class="context-left">
+      <view class="context-label">当前上下文</view>
+      <view class="context-value">
+        <text>{{hasRecognition ? cutName : '通用牛肉问答'}}</text>
+        <text class="context-ready">{{hasRecognition ? '部位已锁定' : '未指定部位'}}</text>
+      </view>
+    </view>
+    <button class="context-switch" bindtap="goDetect">
+      {{hasRecognition ? '重新识别' : '去识别'}}
+    </button>
+  </view>
+
+  <view class="chat-shell">
+    <view class="chat-head">
+      <view class="chat-head-left">
+        <view class="chat-online"></view>
+        <text>{{cutName}}烹饪助手在线</text>
+      </view>
+      <view class="chat-private">仅限牛肉话题</view>
+    </view>
+
+    <scroll-view
+      class="message-scroll"
+      scroll-y
+      scroll-with-animation
+      scroll-into-view="{{scrollInto}}"
+      enhanced
+      show-scrollbar="{{false}}"
+    >
+      <view class="message-list">
+        <block wx:for="{{messages}}" wx:key="id">
+          <view id="msg-{{item.id}}" class="message-row {{item.role}}">
+            <view wx:if="{{item.role === 'assistant'}}" class="message-avatar">问</view>
+            <view class="message-main">
+              <view class="message-bubble {{item.blocked ? 'notice-bubble' : ''}}">
+                <text user-select>{{item.text}}</text>
+              </view>
+              <view class="message-meta">
+                <text>{{item.time}}</text>
+                <text wx:if="{{item.blocked}}" class="answer-tag blocked-tag">
+                  {{item.blockLabel || '请换个牛肉问题'}}
+                </text>
+                <text wx:if="{{item.disclaimer}}" class="answer-tag">烹饪参考</text>
+              </view>
+              <view wx:if="{{item.disclaimer}}" class="message-disclaimer">{{item.disclaimer}}</view>
+            </view>
+            <view wx:if="{{item.role === 'user'}}" class="user-avatar">我</view>
+          </view>
+        </block>
+
+        <view wx:if="{{typing}}" class="message-row assistant">
+          <view class="message-avatar">问</view>
+          <view class="message-main">
+            <view class="message-bubble typing-bubble">
+              <view class="typing-dot d1"></view>
+              <view class="typing-dot d2"></view>
+              <view class="typing-dot d3"></view>
+            </view>
+            <view class="message-meta">正在结合部位特点整理建议</view>
+          </view>
+        </view>
+        <view class="scroll-anchor"></view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <view class="question-panel">
+    <view class="question-panel-head">
+      <view>
+        <view class="question-title">快捷问法</view>
+        <view class="question-sub">也可以在下方自由输入</view>
+      </view>
+      <view class="question-count">{{questions.length}} 个问题</view>
+    </view>
+
+    <view class="question-grid">
+      <view
+        wx:for="{{questions}}"
+        wx:key="id"
+        class="assistant-question"
+        data-id="{{item.id}}"
+        bindtap="pickQuestion"
+      >
+        <view class="question-category">{{item.category}}</view>
+        <view class="question-label">{{item.label}}</view>
+        <view class="question-arrow">↗</view>
+      </view>
+    </view>
+
+    <view class="ask-composer">
+      <view class="ask-input-wrap">
+        <view class="ask-prompt-label">
+          <view class="ask-prompt-dot"></view>
+          自由提问
+        </view>
+        <input
+          class="ask-input"
+          value="{{draft}}"
+          maxlength="120"
+          placeholder="问这块{{cutName}}：如何处理、怎么煎、怎么保存…"
+          placeholder-class="ask-placeholder"
+          confirm-type="send"
+          cursor-spacing="24"
+          adjust-position
+          bindinput="updateDraft"
+          bindconfirm="sendCustomQuestion"
+        />
+      </view>
+      <button
+        class="ask-send {{canSend ? 'ready' : ''}}"
+        disabled="{{!canSend || typing}}"
+        bindtap="sendCustomQuestion"
+      >
+        ↑
+      </button>
+    </view>
+
+    <view class="policy-row" bindtap="togglePolicy">
+      <view class="policy-icon">i</view>
+      <view class="policy-copy">
+        <view>只回答牛肉相关问题</view>
+        <view wx:if="{{policyOpen}}" class="policy-detail">
+          助手以牛肉问题为主，可以询问牛肉与其他肉类的比较或替代；如果整句实际只问其他肉类，才会拦截。识别部位与后续提问部位不一致时也不再拦截。
+        </view>
+      </view>
+      <view class="policy-more">{{policyOpen ? '−' : '+'}}</view>
+    </view>
+  </view>
+
+  <bottom-nav active="assistant" />
+</view>

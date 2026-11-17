@@ -1,0 +1,185 @@
+<view class="page-shell wiki-page">
+  <safe-top />
+  <view class="topbar">
+    <view class="brand">
+      <view class="brand-mark">典</view>
+      <view>
+        <view class="brand-name">识牛百科</view>
+        <view class="brand-sub">BEEF HANDBOOK</view>
+      </view>
+    </view>
+    <button class="assistant-mini" bindtap="goAssistant">问助手</button>
+  </view>
+
+  <view class="wiki-hero fade-in">
+    <view class="hero-art">
+      <view class="hero-orbit orbit-a"></view>
+      <view class="hero-orbit orbit-b"></view>
+      <view class="cow-mark">
+        <view class="horn horn-left"></view>
+        <view class="horn horn-right"></view>
+        <view class="cow-face">
+          <view class="cow-eye eye-left"></view>
+          <view class="cow-eye eye-right"></view>
+          <view class="cow-nose"></view>
+        </view>
+      </view>
+    </view>
+    <view class="eyebrow">FIELD NOTES · 01</view>
+    <view class="wiki-title">
+      <view>看懂牛肉，</view>
+      <view>再决定怎么吃。</view>
+    </view>
+    <view class="wiki-intro">以中式分割为主，已把潮汕火锅叫法并入对应部位，再延伸查看新鲜度与保存方式。</view>
+    <view class="hero-footer">
+      <view class="hero-count"><text>{{articles.length}}</text> 篇当前指南</view>
+      <view class="hero-swipe">向下翻阅 ↓</view>
+    </view>
+  </view>
+
+  <view class="category-tabs">
+    <view
+      wx:for="{{categories}}"
+      wx:key="id"
+      class="category-tab {{activeCategory === item.id ? 'active' : ''}}"
+      data-id="{{item.id}}"
+      bindtap="switchCategory"
+    >
+      <view class="tab-index">0{{index + 1}}</view>
+      <view>{{item.label}}</view>
+    </view>
+  </view>
+
+  <view wx:if="{{categoryIntro}}" class="category-intro">
+    <view class="category-intro-label">本类说明</view>
+    <view class="category-intro-copy">{{categoryIntro}}</view>
+  </view>
+
+  <view wx:if="{{priceGuide}}" class="price-guide">
+    <view class="price-guide-mark">¥</view>
+    <view>{{priceGuide}}</view>
+  </view>
+
+  <view wx:if="{{activeCategory === 'freshness'}}" class="freshness-method">
+    <view class="freshness-step">
+      <view class="freshness-step-index">01</view>
+      <view class="freshness-step-name">看</view>
+      <view class="freshness-step-copy">颜色 · 截面 · 脂肪</view>
+    </view>
+    <view class="freshness-step-rule"></view>
+    <view class="freshness-step">
+      <view class="freshness-step-index">02</view>
+      <view class="freshness-step-name">闻</view>
+      <view class="freshness-step-copy">肉香 · 酸味 · 氨味</view>
+    </view>
+    <view class="freshness-step-rule"></view>
+    <view class="freshness-step">
+      <view class="freshness-step-index">03</view>
+      <view class="freshness-step-name">按</view>
+      <view class="freshness-step-copy">回弹 · 湿度 · 黏液</view>
+    </view>
+  </view>
+
+  <view class="section-title-row">
+    <view>
+      <view class="eyebrow">QUICK REFERENCE</view>
+      <view class="section-title">{{activeLabel}}</view>
+    </view>
+    <view class="section-hint">展开位置与价格</view>
+  </view>
+
+  <view class="knowledge-list">
+    <block wx:for="{{articles}}" wx:key="id">
+      <view wx:if="{{item.isStateGuideStart}}" class="state-guide-heading">
+        <view class="state-guide-kicker">SITUATION GUIDE</view>
+        <view class="state-guide-title">不同状态避坑指南</view>
+        <view class="state-guide-copy">冷鲜、冷冻和鲜切肉要分别检查</view>
+      </view>
+
+      <view
+        class="knowledge-card {{item.accent}} {{item.open ? 'open' : ''}}"
+        data-id="{{item.id}}"
+        bindtap="toggleArticle"
+      >
+      <view class="knowledge-top">
+        <view class="knowledge-number">0{{index + 1}}</view>
+        <view class="knowledge-main">
+          <view class="knowledge-kicker">{{item.kicker}}</view>
+          <view class="knowledge-title-row">
+            <view class="knowledge-title">{{item.title}}</view>
+            <view class="knowledge-subtitle">{{item.subtitle}}</view>
+          </view>
+        </view>
+        <view class="expand-button">{{item.open ? '−' : '+'}}</view>
+      </view>
+
+      <view class="knowledge-summary">{{item.summary}}</view>
+
+      <view wx:if="{{item.priceLabel}}" class="knowledge-price-row">
+        <view class="knowledge-price">{{item.priceLabel}}</view>
+        <view class="knowledge-price-mode">{{item.priceMode}}</view>
+      </view>
+
+      <view wx:if="{{item.chaoshanReference}}" class="chaoshan-alias-row">
+        <view class="chaoshan-alias-label">潮汕火锅</view>
+        <view class="chaoshan-alias-name">{{item.chaoshanReference.aliases}}</view>
+        <view class="chaoshan-alias-arrow">{{item.open ? '−' : '+'}}</view>
+      </view>
+
+      <view wx:if="{{item.open}}" class="knowledge-detail">
+        <view class="detail-rule"></view>
+        <view
+          wx:for="{{item.sections}}"
+          wx:for-item="section"
+          wx:key="label"
+          class="section-row"
+        >
+          <view class="section-label">{{section.label}}</view>
+          <view class="section-copy">{{section.text}}</view>
+        </view>
+
+        <view wx:if="{{item.priceNote}}" class="price-note-card">
+          <view class="price-note-head">
+            <text>价格参考</text>
+            <text class="price-note-mode">{{item.priceMode}}</text>
+          </view>
+          <view
+            wx:for="{{item.priceRows}}"
+            wx:for-item="price"
+            wx:key="price"
+            class="price-row"
+          >
+            <view class="price-source">
+              <view>{{price.source}}</view>
+              <view class="price-spec">{{price.spec}}</view>
+            </view>
+            <view class="price-value">{{price.price}}</view>
+          </view>
+          <view class="price-note-copy">{{item.priceNote}}</view>
+        </view>
+
+        <view wx:if="{{item.chaoshanReference}}" class="chaoshan-reference">
+          <view class="chaoshan-reference-head">
+            <view>
+              <view class="chaoshan-reference-kicker">CHAOSHAN HOTPOT</view>
+              <view class="chaoshan-reference-title">
+                潮汕叫法：{{item.chaoshanReference.aliases}}
+              </view>
+            </view>
+            <view class="chaoshan-reference-price">{{item.chaoshanReference.priceLabel}}</view>
+          </view>
+          <view class="chaoshan-reference-relation">{{item.chaoshanReference.relation}}</view>
+          <view class="chaoshan-reference-note">{{item.chaoshanReference.priceNote}}</view>
+        </view>
+      </view>
+      </view>
+    </block>
+  </view>
+
+  <view class="source-note">
+    <view class="source-mark">i</view>
+    <view>百科内容用于日常挑选和烹饪参考，不替代食品安全监管或专业检验。价格仅作量级参考，不构成采购或售价承诺。</view>
+  </view>
+
+  <bottom-nav active="wiki" />
+</view>

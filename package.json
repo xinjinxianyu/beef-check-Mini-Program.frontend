@@ -1,0 +1,13 @@
+{
+  "name": "beef-check-mini-program-frontend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "识牛微信小程序前端",
+  "scripts": {
+    "check": "node scripts/validate-project.js",
+    "test:topic": "node scripts/test-assistant-topic.js",
+    "test:recipes": "node scripts/test-beef-recipes.js",
+    "test:feedback": "node scripts/test-feedback-email.js",
+    "test:prices": "node scripts/test-price-unit.js"
+  }
+}

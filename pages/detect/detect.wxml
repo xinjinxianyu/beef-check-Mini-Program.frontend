@@ -1,0 +1,176 @@
+<view class="page-shell detect-page">
+  <view class="detect-glow"></view>
+  <safe-top />
+  <view class="topbar">
+    <button class="back-button" bindtap="goBack">‹</button>
+    <view class="topbar-title">识别牛肉</view>
+    <button class="help-button" bindtap="showPhotoTips">?</button>
+  </view>
+
+  <view wx:if="{{!photoPath}}" class="capture-view fade-in">
+    <view class="eyebrow">CAMERA · LOCAL AI</view>
+    <view class="capture-title">把牛肉放进画面</view>
+    <view class="capture-description">
+      在光线充足的地方拍摄，识别会更准确。图片只在当前设备处理。
+    </view>
+
+    <view class="camera-frame" bindtap="chooseFromCamera" hover-class="camera-frame-pressed">
+      <view class="frame-grid"></view>
+      <view class="frame-corner fc-tl"></view>
+      <view class="frame-corner fc-tr"></view>
+      <view class="frame-corner fc-bl"></view>
+      <view class="frame-corner fc-br"></view>
+
+      <view class="camera-symbol">
+        <view class="camera-top"></view>
+        <view class="camera-body">
+          <view class="camera-lens">
+            <view class="lens-inner"></view>
+          </view>
+          <view class="camera-flash"></view>
+        </view>
+      </view>
+      <view class="frame-hint">牛 肉 完 整 入 镜</view>
+      <view class="frame-scan"></view>
+    </view>
+
+    <view class="photo-advice">
+      <view class="advice-item">
+        <view class="advice-index">01</view>
+        <view>
+          <view class="advice-title">自然光线</view>
+          <view class="advice-copy">避免过曝和包装反光</view>
+        </view>
+      </view>
+      <view class="advice-divider"></view>
+      <view class="advice-item">
+        <view class="advice-index">02</view>
+        <view>
+          <view class="advice-title">保持清晰</view>
+          <view class="advice-copy">让肉面与纹理完整可见</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="capture-actions">
+      <button class="shutter-button" bindtap="chooseFromCamera">
+        <view class="shutter-ring">
+          <view class="shutter-core"></view>
+        </view>
+        <view class="shutter-copy">
+          <view class="shutter-title">打开相机</view>
+          <view class="shutter-sub">拍下要识别的牛肉</view>
+        </view>
+        <view class="shutter-arrow">↗</view>
+      </button>
+      <button class="album-button" bindtap="chooseFromAlbum">
+        <view class="album-icon">
+          <view class="album-sun"></view>
+          <view class="album-mountain"></view>
+        </view>
+        从相册选择
+      </button>
+    </view>
+
+    <view class="privacy-note">
+      <view class="shield-mark">◇</view>
+      <view>
+        <view class="privacy-title">端侧推理，保护隐私</view>
+        <view class="privacy-copy">首次下载{{modelSizeLabel}} · 图片不上传</view>
+      </view>
+    </view>
+  </view>
+
+  <view wx:else class="result-flow fade-in">
+    <view class="photo-stage">
+      <image
+        wx:if="{{!resultReady}}"
+        class="photo-preview"
+        src="{{photoPath}}"
+        mode="aspectFill"
+      />
+      <canvas
+        wx:if="{{resultReady}}"
+        id="detectCanvas"
+        type="2d"
+        class="detect-canvas"
+      ></canvas>
+
+      <view class="stage-top">
+        <view class="stage-chip">
+          <view class="stage-dot"></view>
+          {{resultReady ? '分析完成' : '本地分析中'}}
+        </view>
+        <view class="stage-reset" bindtap="chooseFromAlbum">换一张</view>
+      </view>
+
+      <view wx:if="{{isRecognizing}}" class="loading-overlay">
+        <view class="loader-orbit">
+          <view class="loader-orbit-inner"></view>
+          <view class="loader-percent">{{modelProgress}}%</view>
+        </view>
+        <view class="loader-title">{{engineStatus}}</view>
+        <view class="loader-tip">首次加载{{modelSizeLabel}}，图片全程留在设备内</view>
+        <view class="progress-track">
+          <view class="progress-value" style="width: {{modelProgress}}%;"></view>
+        </view>
+      </view>
+
+      <view wx:if="{{resultReady}}" class="canvas-caption">
+        <view class="caption-dot"></view>
+        识别区域已标注
+      </view>
+    </view>
+
+    <view wx:if="{{resultReady && result}}" class="result-card card">
+      <view class="result-card-top">
+        <view>
+          <view class="result-kicker">{{result.cutAlias}}</view>
+          <view class="result-name-row">
+            <text class="result-name">{{result.cutName}}</text>
+            <text class="match-pill">{{result.confidence}}% 匹配</text>
+          </view>
+        </view>
+        <view class="fresh-score">
+          <view class="fresh-score-value">{{result.freshness}}</view>
+          <view class="fresh-score-label">{{result.freshnessLabel}}</view>
+        </view>
+      </view>
+
+      <view class="tag-row">
+        <view class="pill red">{{result.flavor}}</view>
+        <view class="pill">推荐：{{result.serving}}</view>
+      </view>
+
+      <view class="reason-panel">
+        <view class="reason-title">
+          <view class="reason-mark">AI</view>
+          判断依据
+        </view>
+        <view wx:for="{{result.reason}}" wx:key="*this" class="reason-line">
+          <view class="reason-bullet"></view>
+          {{item}}
+        </view>
+      </view>
+
+      <view class="result-note">{{result.note}}</view>
+
+      <button class="primary-button result-button" bindtap="viewResult">
+        查看完整识别结果
+        <text class="button-arrow">→</text>
+      </button>
+      <view class="quick-links">
+        <view bindtap="openAssistant">问问做法 <text>↗</text></view>
+        <view class="link-divider"></view>
+        <view bindtap="chooseFromCamera">重新拍摄</view>
+      </view>
+    </view>
+
+    <view wx:if="{{!resultReady}}" class="processing-copy">
+      <view class="processing-title">请稍候</view>
+      <view class="processing-note">正在分析肉的纹理、颜色与脂肪分布</view>
+    </view>
+  </view>
+
+  <bottom-nav active="detect" />
+</view>

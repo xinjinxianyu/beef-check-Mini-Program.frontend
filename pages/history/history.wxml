@@ -1,0 +1,95 @@
+<view class="page-shell history-page">
+  <safe-top />
+  <view class="topbar">
+    <button class="back-button" bindtap="goBack">‹</button>
+    <view class="topbar-title">识别记录</view>
+    <button class="clear-button" bindtap="clearAll">清空</button>
+  </view>
+
+  <view class="history-heading">
+    <view class="eyebrow">MY BEEF ARCHIVE</view>
+    <view class="history-title">
+      <view>每一次挑选，</view>
+      <view>都有迹可循。</view>
+    </view>
+  </view>
+
+  <view class="history-summary">
+    <view class="summary-item">
+      <view class="summary-value">{{records.length}}</view>
+      <view class="summary-label">识别总数</view>
+    </view>
+    <view class="summary-rule"></view>
+    <view class="summary-item">
+      <view class="summary-value">{{weekCount}}</view>
+      <view class="summary-label">本周新增</view>
+    </view>
+    <view class="summary-rule"></view>
+    <view class="summary-item wide">
+      <view class="summary-value small">{{latestDate}}</view>
+      <view class="summary-label">最近一次</view>
+    </view>
+  </view>
+
+  <view wx:if="{{records.length}}" class="record-section">
+    <view class="section-title-row">
+      <view>
+        <view class="eyebrow">RECENT CHECKS</view>
+        <view class="section-title">全部记录</view>
+      </view>
+      <view class="section-hint">长按可删除</view>
+    </view>
+
+    <view class="record-list">
+      <view
+        wx:for="{{records}}"
+        wx:key="id"
+        class="record-card"
+        data-id="{{item.id}}"
+        bindtap="openRecord"
+        bindlongpress="removeRecord"
+      >
+        <view class="record-image-wrap">
+          <image class="record-image" src="{{item.imagePath}}" mode="aspectFill" />
+          <view class="record-match">{{item.confidence}}%</view>
+        </view>
+        <view class="record-content">
+          <view class="record-top">
+            <view class="record-name">{{item.cutName}}</view>
+            <view class="record-time">{{item.displayTime}}</view>
+          </view>
+          <view class="record-alias">{{item.cutAlias}}</view>
+          <view class="record-bottom">
+            <view class="fresh-pill">
+              <view class="fresh-dot"></view>
+              新鲜度 {{item.freshness}}%
+            </view>
+            <view class="record-arrow">›</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view wx:else class="empty-history">
+    <view class="empty-art">
+      <view class="empty-frame"></view>
+      <view class="empty-steak"></view>
+      <view class="empty-spark spark-a">+</view>
+      <view class="empty-spark spark-b">+</view>
+    </view>
+    <view class="empty-title">还没有识别记录</view>
+    <view class="empty-copy">第一次拍照识别后，结果会自动保存在当前设备。</view>
+    <button class="primary-button empty-action" bindtap="goDetect">
+      拍一张牛肉
+      <text class="button-arrow">→</text>
+    </button>
+  </view>
+
+  <view class="privacy-footer">
+    <view class="privacy-mark">◇</view>
+    <view>识别记录与图片仅保留在当前设备，清理缓存或删除小程序后无法恢复。</view>
+  </view>
+
+  <bottom-nav active="profile" />
+</view>

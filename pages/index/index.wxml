@@ -1,0 +1,179 @@
+<view class="page-shell home-page">
+  <view class="grain grain-one"></view>
+  <view class="grain grain-two"></view>
+
+  <safe-top />
+  <view class="topbar">
+    <view class="brand">
+      <view class="brand-mark">牧</view>
+      <view>
+        <view class="brand-name">识牛</view>
+        <view class="brand-sub">BEEF ATLAS</view>
+      </view>
+    </view>
+    <button class="avatar-button" bindtap="openProfile">
+      <image
+        wx:if="{{user && user.avatarUrl}}"
+        class="avatar-image"
+        src="{{user.avatarUrl}}"
+        mode="aspectFill"
+      />
+      <text wx:else class="avatar-placeholder">{{user ? '牧' : '游'}}</text>
+    </button>
+  </view>
+
+  <view class="hero-copy fade-in">
+    <view class="eyebrow">端侧识别 · 隐私留在本机</view>
+    <view class="hero-title">
+      <text>看得准，</text>
+      <text class="hero-accent">吃得明白。</text>
+    </view>
+    <view class="hero-description">
+      拍下牛肉，识别部位与新鲜度，再问一句怎么做。
+    </view>
+  </view>
+
+  <view class="scan-panel fade-in" bindtap="openDetect">
+    <view class="scan-corner corner-tl"></view>
+    <view class="scan-corner corner-tr"></view>
+    <view class="scan-corner corner-bl"></view>
+    <view class="scan-corner corner-br"></view>
+
+    <view class="scan-panel-head">
+      <view class="live-pill">
+        <view class="live-dot"></view>
+      </view>
+      <view class="scan-panel-note">首次加载 {{modelSizeLabel}}</view>
+    </view>
+
+    <view class="beef-illustration camera-preview">
+      <image class="camera-image" src="/assets/home/beef-camera.jpg" mode="aspectFill" />
+      <view class="camera-vignette"></view>
+      <view class="plate-shadow"></view>
+      <view class="plate">
+        <view class="steak">
+          <view class="steak-highlight"></view>
+          <view class="marbling marble-a"></view>
+          <view class="marbling marble-b"></view>
+          <view class="marbling marble-c"></view>
+          <view class="marbling marble-d"></view>
+        </view>
+        <view class="herb herb-a"></view>
+        <view class="herb herb-b"></view>
+      </view>
+      <view class="scan-beam"></view>
+      <view class="floating-label label-cut">
+        <view class="label-dot"></view>
+        里脊
+      </view>
+      <view class="floating-label label-fresh">
+        <view class="fresh-status-dot"></view>
+        新鲜
+      </view>
+    </view>
+
+    <button class="scan-action" catchtap="openDetect">
+      <view class="scan-icon-mini">
+        <view class="mini-corner m1"></view>
+        <view class="mini-corner m2"></view>
+        <view class="mini-corner m3"></view>
+        <view class="mini-corner m4"></view>
+      </view>
+      <view>
+        <view class="scan-action-title">识别牛肉</view>
+      </view>
+      <view class="round-arrow">↗</view>
+    </button>
+  </view>
+
+  <view class="mini-stats">
+    <view class="mini-stat">
+      <view class="stat-icon">◎</view>
+      <view>
+        <view class="stat-value">本地计算</view>
+        <view class="stat-label">图片不出设备</view>
+      </view>
+    </view>
+    <view class="stat-divider"></view>
+    <view class="mini-stat" bindtap="openHistory">
+      <view class="stat-icon">◷</view>
+      <view>
+        <view class="stat-value">{{recognizedCount}} 次</view>
+        <view class="stat-label">我的识别记录</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="section-title-row">
+    <view>
+      <view class="eyebrow">KNOW-HOW</view>
+      <view class="section-title">从识肉到做菜</view>
+    </view>
+    <view class="section-hint">为你整理</view>
+  </view>
+
+  <view class="utility-list">
+    <view
+      wx:for="{{utilityCards}}"
+      wx:key="key"
+      class="utility-card {{item.tone}}"
+      data-path="{{item.path}}"
+      bindtap="navigateUtility"
+    >
+      <view class="utility-content">
+        <view class="utility-eyebrow">{{item.eyebrow}}</view>
+        <view class="utility-title">{{item.title}}</view>
+        <view class="utility-description">{{item.description}}</view>
+      </view>
+      <view class="utility-art">
+        <view wx:if="{{item.key === 'assistant'}}" class="assistant-art">
+          <view class="assistant-ring ring-one"></view>
+          <view class="assistant-ring ring-two"></view>
+          <view class="assistant-core">问</view>
+        </view>
+        <view wx:else class="book-art">
+          <view class="book-page page-left"></view>
+          <view class="book-page page-right"></view>
+          <view class="book-spine"></view>
+        </view>
+      </view>
+      <view class="utility-link">去看看 <text>↗</text></view>
+    </view>
+  </view>
+
+  <view class="section-title-row">
+    <view>
+      <view class="eyebrow">BEEF NOTES</view>
+      <view class="section-title">热门部位</view>
+    </view>
+    <view class="text-link" bindtap="openWiki">全部百科 <text>↗</text></view>
+  </view>
+
+  <scroll-view class="article-scroll" scroll-x enhanced show-scrollbar="{{false}}">
+    <view class="article-row">
+      <view
+        wx:for="{{popularArticles}}"
+        wx:key="id"
+        class="article-card {{item.accent}}"
+        data-id="{{item.id}}"
+        bindtap="openArticle"
+      >
+        <view class="article-orbit"></view>
+        <view class="article-index">0{{index + 1}}</view>
+        <view class="article-kicker">{{item.kicker}}</view>
+        <view class="article-title">{{item.title}}</view>
+        <view class="article-subtitle">{{item.subtitle}}</view>
+        <view class="article-rule"></view>
+        <view class="article-summary">{{item.summary}}</view>
+        <view class="article-more">查看图鉴 <text>↗</text></view>
+      </view>
+    </view>
+  </scroll-view>
+
+  <view class="home-footer">
+    <view class="footer-line"></view>
+    <view class="footer-copy">认真吃饭，也认真了解每一口</view>
+  </view>
+
+  <bottom-nav active="home" />
+</view>

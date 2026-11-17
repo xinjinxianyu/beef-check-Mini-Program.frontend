@@ -1,0 +1,296 @@
+.history-page {
+  background:
+    radial-gradient(circle at 100% 3%, rgba(217, 84, 61, 0.09), transparent 22%),
+    #f7f3e9;
+}
+
+.clear-button {
+  height: 52rpx;
+  padding: 0 16rpx;
+  border-radius: 999rpx;
+  background: rgba(255, 253, 247, 0.68);
+  color: #7c8780;
+  font-size: 19rpx;
+  line-height: 52rpx;
+}
+
+.history-heading {
+  padding: 40rpx 4rpx 30rpx;
+}
+
+.history-title {
+  margin-top: 13rpx;
+  font-family: "Songti SC", serif;
+  font-size: 54rpx;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -1rpx;
+}
+
+.history-summary {
+  display: flex;
+  align-items: stretch;
+  padding: 25rpx 12rpx;
+  border-radius: 28rpx;
+  background: #18382e;
+  color: #fffdf7;
+  box-shadow: 0 20rpx 44rpx rgba(24, 56, 46, 0.16);
+}
+
+.summary-item {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.summary-item.wide {
+  flex: 1.55;
+}
+
+.summary-value {
+  color: #f2c85b;
+  font-family: "Songti SC", serif;
+  font-size: 43rpx;
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.summary-value.small {
+  color: #fffdf7;
+  font-family: "PingFang SC", sans-serif;
+  font-size: 22rpx;
+}
+
+.summary-label {
+  margin-top: 5rpx;
+  color: rgba(255, 253, 247, 0.46);
+  font-size: 17rpx;
+}
+
+.summary-rule {
+  width: 1rpx;
+  margin: 8rpx 0;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.record-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14rpx;
+}
+
+.record-card {
+  display: flex;
+  padding: 14rpx;
+  border: 1rpx solid rgba(24, 56, 46, 0.07);
+  border-radius: 28rpx;
+  background: #fffdf7;
+  box-shadow: 0 12rpx 32rpx rgba(40, 54, 45, 0.045);
+}
+
+.record-image-wrap {
+  position: relative;
+  flex: 0 0 170rpx;
+  width: 170rpx;
+  height: 154rpx;
+  overflow: hidden;
+  border-radius: 21rpx;
+  background: #e9e2d4;
+}
+
+.record-image {
+  width: 100%;
+  height: 100%;
+}
+
+.record-match {
+  position: absolute;
+  right: 8rpx;
+  bottom: 8rpx;
+  padding: 3rpx 8rpx;
+  border-radius: 7rpx;
+  background: rgba(17, 37, 29, 0.74);
+  color: #f2c85b;
+  font-size: 15rpx;
+}
+
+.record-content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+  padding: 4rpx 14rpx 4rpx 20rpx;
+}
+
+.record-top {
+  display: flex;
+  align-items: baseline;
+}
+
+.record-name {
+  font-family: "Songti SC", serif;
+  font-size: 34rpx;
+  font-weight: 700;
+}
+
+.record-time {
+  margin-left: auto;
+  color: #a0a79f;
+  font-size: 16rpx;
+}
+
+.record-alias {
+  margin-top: 2rpx;
+  overflow: hidden;
+  color: #929b94;
+  font-size: 16rpx;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.record-bottom {
+  display: flex;
+  align-items: center;
+  margin-top: 18rpx;
+}
+
+.fresh-pill {
+  display: flex;
+  align-items: center;
+  gap: 7rpx;
+  padding: 5rpx 10rpx;
+  border-radius: 99rpx;
+  background: #e7eee0;
+  color: #54705a;
+  font-size: 16rpx;
+}
+
+.fresh-dot {
+  width: 6rpx;
+  height: 6rpx;
+  border-radius: 50%;
+  background: #789871;
+}
+
+.record-arrow {
+  margin-left: auto;
+  color: #9aa39c;
+  font-size: 32rpx;
+}
+
+.empty-history {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50rpx 52rpx 30rpx;
+  text-align: center;
+}
+
+.empty-art {
+  position: relative;
+  width: 220rpx;
+  height: 180rpx;
+}
+
+.empty-frame {
+  position: absolute;
+  top: 20rpx;
+  left: 32rpx;
+  width: 156rpx;
+  height: 126rpx;
+  border: 2rpx solid rgba(24, 56, 46, 0.16);
+  border-radius: 20rpx;
+  transform: rotate(-6deg);
+}
+
+.empty-frame::before,
+.empty-frame::after {
+  position: absolute;
+  width: 18rpx;
+  height: 18rpx;
+  border-color: #d9543d;
+  border-style: solid;
+  content: "";
+}
+
+.empty-frame::before {
+  top: -2rpx;
+  left: -2rpx;
+  border-width: 3rpx 0 0 3rpx;
+}
+
+.empty-frame::after {
+  right: -2rpx;
+  bottom: -2rpx;
+  border-width: 0 3rpx 3rpx 0;
+}
+
+.empty-steak {
+  position: absolute;
+  top: 56rpx;
+  left: 72rpx;
+  width: 84rpx;
+  height: 66rpx;
+  border-radius: 50% 42% 50% 44%;
+  background: #d9543d;
+  box-shadow: inset 0 5rpx 12rpx rgba(255, 255, 255, 0.18);
+  transform: rotate(-10deg);
+}
+
+.empty-spark {
+  position: absolute;
+  color: #f2c85b;
+  font-size: 28rpx;
+}
+
+.spark-a {
+  top: 8rpx;
+  right: 20rpx;
+}
+
+.spark-b {
+  bottom: 10rpx;
+  left: 15rpx;
+  font-size: 20rpx;
+}
+
+.empty-title {
+  margin-top: 18rpx;
+  font-family: "Songti SC", serif;
+  font-size: 36rpx;
+  font-weight: 700;
+}
+
+.empty-copy {
+  margin-top: 9rpx;
+  color: #849087;
+  font-size: 21rpx;
+  line-height: 1.65;
+}
+
+.empty-action {
+  width: 330rpx;
+  height: 84rpx;
+  margin-top: 26rpx;
+}
+
+.privacy-footer {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 8rpx;
+  margin-top: 30rpx;
+  padding: 0 30rpx;
+  color: #99a19b;
+  font-size: 17rpx;
+  line-height: 1.55;
+  text-align: center;
+}
+
+.privacy-mark {
+  color: #7b967a;
+  font-size: 20rpx;
+}

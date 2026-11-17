@@ -1,0 +1,733 @@
+.result-page {
+  background:
+    radial-gradient(circle at 100% 3%, rgba(242, 200, 91, 0.22), transparent 22%),
+    #f7f3e9;
+}
+
+.share-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 66rpx;
+  height: 66rpx;
+  border: 1rpx solid rgba(24, 56, 46, 0.1);
+  border-radius: 50%;
+  background: rgba(255, 253, 247, 0.76);
+  font-size: 28rpx;
+}
+
+.report-image {
+  position: relative;
+  height: 650rpx;
+  margin-top: 18rpx;
+  overflow: hidden;
+  border-radius: 38rpx;
+  background: #d9d0c1;
+  box-shadow: 0 26rpx 58rpx rgba(24, 56, 46, 0.17);
+}
+
+.report-photo {
+  width: 100%;
+  height: 100%;
+}
+
+.report-image-shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(8, 24, 18, 0.08) 28%, rgba(8, 24, 18, 0.76) 100%);
+}
+
+.report-badge {
+  position: absolute;
+  top: 24rpx;
+  left: 24rpx;
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+  height: 46rpx;
+  padding: 0 16rpx;
+  border: 1rpx solid rgba(255, 255, 255, 0.16);
+  border-radius: 999rpx;
+  background: rgba(16, 35, 28, 0.64);
+  color: rgba(255, 253, 247, 0.9);
+  font-size: 18rpx;
+  backdrop-filter: blur(10rpx);
+}
+
+.report-badge-dot {
+  width: 8rpx;
+  height: 8rpx;
+  border-radius: 50%;
+  background: #f2c85b;
+}
+
+.report-verdict {
+  position: absolute;
+  right: 30rpx;
+  bottom: 32rpx;
+  left: 30rpx;
+  color: #fffdf7;
+}
+
+.verdict-kicker {
+  color: rgba(255, 253, 247, 0.58);
+  font-size: 20rpx;
+  letter-spacing: 2rpx;
+}
+
+.verdict-line {
+  display: flex;
+  align-items: baseline;
+  gap: 12rpx;
+  margin-top: 6rpx;
+  font-size: 30rpx;
+}
+
+.verdict-cut {
+  font-family: "Songti SC", serif;
+  font-size: 62rpx;
+  font-weight: 700;
+  letter-spacing: 2rpx;
+}
+
+.verdict-note {
+  margin-top: 2rpx;
+  color: rgba(255, 253, 247, 0.68);
+  font-size: 22rpx;
+}
+
+.score-card {
+  display: flex;
+  align-items: stretch;
+  margin-top: 22rpx;
+  padding: 28rpx;
+}
+
+.score-main {
+  display: flex;
+  flex: 0 0 190rpx;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.score-title {
+  color: #68776e;
+  font-size: 20rpx;
+}
+
+.score-number {
+  margin-top: 4rpx;
+  color: #d9543d;
+  font-family: "Songti SC", serif;
+  font-size: 66rpx;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.score-number text {
+  margin-left: 2rpx;
+  font-family: "PingFang SC", sans-serif;
+  font-size: 22rpx;
+}
+
+.score-label {
+  align-self: flex-start;
+  margin-top: 4rpx;
+  padding: 4rpx 12rpx;
+  border-radius: 999rpx;
+  background: #e4eddd;
+  color: #4d6c56;
+  font-size: 18rpx;
+}
+
+.score-divider {
+  width: 1rpx;
+  margin: 0 24rpx;
+  background: rgba(24, 56, 46, 0.08);
+}
+
+.score-metrics {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  gap: 14rpx;
+}
+
+.metric-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #65736b;
+  font-size: 18rpx;
+}
+
+.metric-value {
+  color: #18382e;
+  font-weight: 600;
+}
+
+.metric-track {
+  height: 5rpx;
+  margin-top: 5rpx;
+  overflow: hidden;
+  border-radius: 5rpx;
+  background: #eee9de;
+}
+
+.metric-fill {
+  height: 100%;
+  border-radius: 5rpx;
+  background: linear-gradient(90deg, #a9b89e, #18382e);
+}
+
+.model-trust {
+  display: flex;
+  align-items: center;
+  margin-top: 16rpx;
+  padding: 18rpx 20rpx;
+  border: 1rpx solid rgba(24, 56, 46, 0.07);
+  border-radius: 20rpx;
+  background: rgba(255, 253, 247, 0.48);
+  font-size: 20rpx;
+}
+
+.trust-mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44rpx;
+  height: 34rpx;
+  margin-right: 12rpx;
+  border-radius: 8rpx;
+  background: #18382e;
+  color: #f2c85b;
+  font-size: 15rpx;
+  font-weight: 700;
+}
+
+.trust-copy {
+  flex: 1;
+}
+
+.trust-sub {
+  margin-top: 2rpx;
+  color: #8a958d;
+  font-size: 17rpx;
+}
+
+.trust-verified {
+  color: #5d765e;
+  font-size: 18rpx;
+}
+
+.trust-verified::before {
+  display: inline-block;
+  width: 7rpx;
+  height: 7rpx;
+  margin-right: 7rpx;
+  border-radius: 50%;
+  background: #7f9f74;
+  content: "";
+}
+
+.evidence-card {
+  padding: 8rpx 26rpx 24rpx;
+}
+
+.evidence-row {
+  display: flex;
+  align-items: center;
+  min-height: 86rpx;
+  border-bottom: 1rpx solid rgba(24, 56, 46, 0.07);
+}
+
+.evidence-index {
+  width: 58rpx;
+  color: #d6a09a;
+  font-family: "Songti SC", serif;
+  font-size: 20rpx;
+  font-weight: 700;
+}
+
+.evidence-content {
+  flex: 1;
+  color: #43584d;
+  font-size: 23rpx;
+}
+
+.evidence-tip {
+  margin-top: 20rpx;
+  padding: 18rpx;
+  border-radius: 18rpx;
+  background: #f6f1e6;
+  color: #65736b;
+  font-size: 20rpx;
+  line-height: 1.7;
+}
+
+.cooking-card {
+  padding: 28rpx;
+  border-radius: 32rpx;
+  background: #18382e;
+  color: #fffdf7;
+  box-shadow: 0 24rpx 50rpx rgba(24, 56, 46, 0.2);
+}
+
+.cooking-top {
+  display: flex;
+  align-items: center;
+}
+
+.cooking-art {
+  position: relative;
+  width: 150rpx;
+  height: 130rpx;
+  margin-right: 20rpx;
+}
+
+.pan-body {
+  position: absolute;
+  bottom: 4rpx;
+  left: 2rpx;
+  width: 112rpx;
+  height: 58rpx;
+  border-radius: 50% 50% 44% 44%;
+  background: linear-gradient(180deg, #e8ddc7, #a99c86);
+  box-shadow: inset 0 -8rpx 13rpx rgba(59, 47, 34, 0.24);
+}
+
+.pan-handle {
+  position: absolute;
+  right: 2rpx;
+  bottom: 34rpx;
+  width: 54rpx;
+  height: 20rpx;
+  border-radius: 10rpx;
+  background: #f2c85b;
+  transform: rotate(-11deg);
+}
+
+.pan-steam {
+  position: absolute;
+  top: 8rpx;
+  width: 20rpx;
+  height: 44rpx;
+  border-left: 2rpx solid rgba(255, 253, 247, 0.3);
+  border-radius: 50%;
+}
+
+.steam-one {
+  left: 38rpx;
+  transform: rotate(8deg);
+}
+
+.steam-two {
+  left: 70rpx;
+  transform: rotate(-9deg);
+}
+
+.cooking-copy {
+  flex: 1;
+}
+
+.cooking-kicker {
+  color: #f2c85b;
+  font-size: 18rpx;
+  letter-spacing: 2rpx;
+}
+
+.cooking-name {
+  margin-top: 3rpx;
+  font-family: "Songti SC", serif;
+  font-size: 33rpx;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.cooking-flavor {
+  margin-top: 5rpx;
+  color: rgba(255, 253, 247, 0.52);
+  font-size: 19rpx;
+}
+
+.assistant-banner {
+  display: flex;
+  align-items: center;
+  margin-top: 26rpx;
+  padding: 18rpx;
+  border: 1rpx solid rgba(255, 253, 247, 0.08);
+  border-radius: 22rpx;
+  background: rgba(255, 255, 255, 0.055);
+}
+
+.assistant-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64rpx;
+  height: 64rpx;
+  margin-right: 14rpx;
+  border-radius: 50% 50% 50% 14rpx;
+  background: #f2c85b;
+  color: #18382e;
+  font-family: "Songti SC", serif;
+  font-size: 26rpx;
+  font-weight: 700;
+}
+
+.assistant-copy {
+  flex: 1;
+}
+
+.assistant-title {
+  font-size: 23rpx;
+  font-weight: 600;
+}
+
+.assistant-sub {
+  margin-top: 2rpx;
+  color: rgba(255, 253, 247, 0.48);
+  font-size: 18rpx;
+}
+
+.assistant-arrow {
+  color: #f2c85b;
+  font-size: 30rpx;
+}
+
+.question-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10rpx;
+  margin-top: 18rpx;
+}
+
+.question-chip {
+  display: flex;
+  align-items: center;
+  gap: 10rpx;
+  height: 58rpx;
+  padding: 0 18rpx;
+  border: 1rpx solid rgba(255, 253, 247, 0.1);
+  border-radius: 999rpx;
+  color: rgba(255, 253, 247, 0.78);
+  font-size: 19rpx;
+}
+
+.question-chip text:last-child {
+  color: #f2c85b;
+}
+
+.action-card {
+  display: flex;
+  align-items: center;
+  margin-top: 22rpx;
+  padding: 22rpx;
+}
+
+.action-main {
+  display: flex;
+  flex: 1;
+  align-items: center;
+}
+
+.action-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 62rpx;
+  height: 62rpx;
+  margin-right: 14rpx;
+  border-radius: 18rpx;
+  background: #e4eddd;
+  color: #4d6b55;
+  font-family: "Songti SC", serif;
+  font-size: 25rpx;
+  font-weight: 700;
+}
+
+.action-title {
+  font-size: 21rpx;
+  font-weight: 600;
+}
+
+.action-sub {
+  margin-top: 2rpx;
+  color: #8b958e;
+  font-size: 17rpx;
+}
+
+.action-local-tag {
+  padding: 7rpx 12rpx;
+  border-radius: 9rpx;
+  background: #18382e;
+  color: #f2c85b;
+  font-size: 14rpx;
+  font-weight: 700;
+  letter-spacing: 1rpx;
+}
+
+.report-actions {
+  margin-top: 24rpx;
+}
+
+.report-actions .secondary-button {
+  height: 88rpx;
+}
+
+.text-action {
+  width: 100%;
+  height: 76rpx;
+  color: #6b7b71;
+  font-size: 21rpx;
+}
+
+.report-disclaimer {
+  padding: 16rpx 20rpx 26rpx;
+  color: #929b94;
+  font-size: 18rpx;
+  line-height: 1.65;
+  text-align: center;
+}
+
+.empty-report {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 170rpx 44rpx 0;
+  text-align: center;
+}
+
+.empty-orbit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 180rpx;
+  height: 180rpx;
+  border: 1rpx solid rgba(24, 56, 46, 0.12);
+  border-radius: 50%;
+}
+
+.empty-symbol {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 110rpx;
+  height: 110rpx;
+  border-radius: 50%;
+  background: #e4eddd;
+  color: #d9543d;
+  font-size: 44rpx;
+}
+
+.empty-title {
+  margin-top: 34rpx;
+  font-family: "Songti SC", serif;
+  font-size: 40rpx;
+  font-weight: 700;
+}
+
+.empty-copy {
+  margin: 12rpx 0 32rpx;
+  color: #76837b;
+  font-size: 23rpx;
+  line-height: 1.7;
+}
+
+.sheet-mask {
+  position: fixed;
+  z-index: 100;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  background: rgba(11, 25, 19, 0.48);
+  animation: maskIn 180ms ease both;
+}
+
+@keyframes maskIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.feedback-sheet {
+  width: 100%;
+  padding: 16rpx 32rpx calc(32rpx + env(safe-area-inset-bottom));
+  border-radius: 40rpx 40rpx 0 0;
+  background: #fffdf7;
+  animation: sheetUp 260ms ease both;
+}
+
+@keyframes sheetUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.sheet-handle {
+  width: 70rpx;
+  height: 7rpx;
+  margin: 0 auto 24rpx;
+  border-radius: 10rpx;
+  background: #d5d7d0;
+}
+
+.sheet-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.sheet-title {
+  font-family: "Songti SC", serif;
+  font-size: 38rpx;
+  font-weight: 700;
+}
+
+.sheet-sub {
+  margin-top: 4rpx;
+  color: #7f8a83;
+  font-size: 21rpx;
+}
+
+.sheet-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56rpx;
+  height: 56rpx;
+  border-radius: 50%;
+  background: #f2eee5;
+  color: #6f7a73;
+  font-size: 32rpx;
+}
+
+.feedback-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14rpx;
+  margin-top: 26rpx;
+}
+
+.feedback-option {
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+  height: 64rpx;
+  padding: 0 18rpx;
+  border: 1rpx solid rgba(24, 56, 46, 0.1);
+  border-radius: 18rpx;
+  color: #647269;
+  font-size: 20rpx;
+}
+
+.feedback-option.selected {
+  border-color: rgba(217, 84, 61, 0.34);
+  background: #fdf0eb;
+  color: #b4402d;
+}
+
+.option-check {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26rpx;
+  height: 26rpx;
+  border: 1rpx solid rgba(24, 56, 46, 0.16);
+  border-radius: 7rpx;
+  font-size: 18rpx;
+}
+
+.selected .option-check {
+  border-color: #d9543d;
+  background: #d9543d;
+  color: #fff;
+}
+
+.feedback-input {
+  width: 100%;
+  height: 150rpx;
+  margin-top: 20rpx;
+  padding: 18rpx;
+  border-radius: 20rpx;
+  background: #f5f1e8;
+  color: #18382e;
+  font-size: 22rpx;
+  line-height: 1.6;
+}
+
+.feedback-placeholder {
+  color: #9ba39d;
+}
+
+.sample-toggle {
+  display: flex;
+  align-items: center;
+  margin-top: 20rpx;
+  padding: 18rpx;
+  border-radius: 20rpx;
+  background: #f7f4ec;
+}
+
+.sample-copy {
+  flex: 1;
+}
+
+.sample-title {
+  font-size: 21rpx;
+  font-weight: 600;
+}
+
+.sample-sub {
+  margin-top: 2rpx;
+  color: #89928c;
+  font-size: 17rpx;
+}
+
+.switch {
+  position: relative;
+  width: 76rpx;
+  height: 42rpx;
+  border-radius: 999rpx;
+  background: #d7d9d4;
+  transition: background 180ms ease;
+}
+
+.switch.on {
+  background: #d9543d;
+}
+
+.switch-dot {
+  position: absolute;
+  top: 5rpx;
+  left: 5rpx;
+  width: 32rpx;
+  height: 32rpx;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 4rpx 10rpx rgba(0, 0, 0, 0.14);
+  transition: transform 180ms ease;
+}
+
+.switch.on .switch-dot {
+  transform: translateX(34rpx);
+}
+
+.feedback-submit {
+  margin-top: 24rpx;
+}
+
+.feedback-email-note {
+  margin-top: 14rpx;
+  color: #8d978f;
+  font-size: 17rpx;
+  line-height: 1.55;
+  text-align: center;
+}

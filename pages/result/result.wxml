@@ -1,0 +1,203 @@
+<view class="page-shell no-nav result-page">
+  <safe-top />
+  <view class="topbar">
+    <button class="back-button" bindtap="goBack">‹</button>
+    <view class="topbar-title">识别报告</view>
+    <button class="share-button" open-type="share">↗</button>
+  </view>
+
+  <view wx:if="{{empty}}" class="empty-report fade-in">
+    <view class="empty-orbit">
+      <view class="empty-symbol">◎</view>
+    </view>
+    <view class="empty-title">还没有识别记录</view>
+    <view class="empty-copy">拍一张牛肉照片，几秒后就能看到部位与新鲜度报告。</view>
+    <button class="primary-button" bindtap="reRecognize">去拍照识别</button>
+  </view>
+
+  <block wx:if="{{result}}">
+    <view class="report-image">
+      <image class="report-photo" src="{{result.imagePath}}" mode="aspectFill" />
+      <view class="report-image-shade"></view>
+      <view class="report-badge">
+        <view class="report-badge-dot"></view>
+        {{detectedAt}} · 本地识别
+      </view>
+      <view class="report-verdict">
+        <view class="verdict-kicker">{{result.cutAlias}}</view>
+        <view class="verdict-line">
+          <text>这是一块</text>
+          <text class="verdict-cut">{{result.cutName}}</text>
+        </view>
+        <view class="verdict-note">{{result.flavor}}</view>
+      </view>
+    </view>
+
+    <view class="score-card card fade-in">
+      <view class="score-main">
+        <view class="score-title">综合新鲜度</view>
+        <view class="score-number">{{result.freshness}}<text>%</text></view>
+        <view class="score-label">{{result.freshnessLabel}}</view>
+      </view>
+      <view class="score-divider"></view>
+      <view class="score-metrics">
+        <view wx:for="{{freshnessMetrics}}" wx:key="label" class="metric-row">
+          <view class="metric-head">
+            <text>{{item.label}}</text>
+            <text class="metric-value">{{item.value}}%</text>
+          </view>
+          <view class="metric-track">
+            <view class="metric-fill" style="width: {{item.value}}%;"></view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="model-trust">
+      <view class="trust-mark">AI</view>
+      <view class="trust-copy">
+        <view>部位匹配度 {{result.confidence}}%</view>
+        <view class="trust-sub">基于端侧模型 {{result.modelVersion}}</view>
+      </view>
+      <view class="trust-verified">已完成</view>
+    </view>
+
+    <view class="section-title-row">
+      <view>
+        <view class="eyebrow">WHY THIS CUT</view>
+        <view class="section-title">判断依据</view>
+      </view>
+    </view>
+
+    <view class="evidence-card card">
+      <view wx:for="{{result.reason}}" wx:key="*this" class="evidence-row">
+        <view class="evidence-index">0{{index + 1}}</view>
+        <view class="evidence-content">{{item}}</view>
+      </view>
+      <view class="evidence-tip">{{result.note}}</view>
+    </view>
+
+    <view class="section-title-row">
+      <view>
+        <view class="eyebrow">COOKING GUIDE</view>
+        <view class="section-title">适合怎么做</view>
+      </view>
+      <view class="text-link" bindtap="goAssistant">问牛肉助手 <text>↗</text></view>
+    </view>
+
+    <view class="cooking-card">
+      <view class="cooking-top">
+        <view class="cooking-art">
+          <view class="pan-handle"></view>
+          <view class="pan-body"></view>
+          <view class="pan-steam steam-one"></view>
+          <view class="pan-steam steam-two"></view>
+        </view>
+        <view class="cooking-copy">
+          <view class="cooking-kicker">推荐做法</view>
+          <view class="cooking-name">{{result.serving}}</view>
+          <view class="cooking-flavor">{{result.flavor}}</view>
+        </view>
+      </view>
+
+      <view class="assistant-banner" bindtap="goAssistant">
+        <view class="assistant-avatar">问</view>
+        <view class="assistant-copy">
+          <view class="assistant-title">牛肉做法助手</view>
+          <view class="assistant-sub">根据这块 {{result.cutName}}，给你具体建议</view>
+        </view>
+        <view class="assistant-arrow">→</view>
+      </view>
+
+      <view class="question-list">
+        <view
+          wx:for="{{questions}}"
+          wx:key="id"
+          class="question-chip"
+          data-id="{{item.id}}"
+          bindtap="openQuestion"
+        >
+          <text>{{item.label}}</text>
+          <text>↗</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="action-card card">
+      <view class="action-main">
+        <view class="action-icon">本</view>
+        <view>
+          <view class="action-title">记录已保存在本机</view>
+          <view class="action-sub">仅当前设备可见，不会上传云端</view>
+        </view>
+      </view>
+      <view class="action-local-tag">LOCAL</view>
+    </view>
+
+    <view class="report-actions">
+      <button class="secondary-button" bindtap="openFeedback">识别不准？点此反馈</button>
+      <button class="text-action" bindtap="reRecognize">重新识别一张</button>
+    </view>
+
+    <view class="report-disclaimer">
+      识别结果仅供选肉和烹饪参考。食品安全请结合购买渠道、储存条件与实际感官判断。
+    </view>
+  </block>
+
+  <view wx:if="{{feedbackVisible}}" class="sheet-mask" bindtap="closeFeedback">
+    <view class="feedback-sheet" catchtap="stopBubble">
+      <view class="sheet-handle"></view>
+      <view class="sheet-head">
+        <view>
+          <view class="sheet-title">帮助模型更准确</view>
+          <view class="sheet-sub">哪里识别得不对？</view>
+        </view>
+        <button class="sheet-close" bindtap="closeFeedback">×</button>
+      </view>
+
+      <view class="feedback-options">
+        <view
+          wx:for="{{feedbackReasons}}"
+          wx:key="id"
+          class="feedback-option {{item.selected ? 'selected' : ''}}"
+          data-id="{{item.id}}"
+          bindtap="toggleFeedbackReason"
+        >
+          <view class="option-check">{{item.selected ? '✓' : ''}}</view>
+          {{item.label}}
+        </view>
+      </view>
+
+      <textarea
+        class="feedback-input"
+        placeholder="补充说明（选填）"
+        placeholder-class="feedback-placeholder"
+        maxlength="120"
+        value="{{feedbackNote}}"
+        bindinput="updateFeedbackNote"
+      ></textarea>
+
+      <view class="sample-toggle" bindtap="toggleIncludeImage">
+        <view class="sample-copy">
+          <view class="sample-title">附带当前图片作为改进样本</view>
+          <view class="sample-sub">仅用于模型纠错，不会公开展示</view>
+        </view>
+        <view class="switch {{includeImage ? 'on' : ''}}">
+          <view class="switch-dot"></view>
+        </view>
+      </view>
+
+      <view wx:if="{{feedbackEmail}}" class="feedback-email-note">
+        反馈将发送至管理员邮箱：{{feedbackEmail}}
+      </view>
+
+      <button
+        class="primary-button feedback-submit"
+        loading="{{submittingFeedback}}"
+        bindtap="submitFeedback"
+      >
+        提交反馈
+      </button>
+    </view>
+  </view>
+</view>

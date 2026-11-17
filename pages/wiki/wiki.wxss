@@ -1,0 +1,712 @@
+.wiki-page {
+  background:
+    radial-gradient(circle at 0% 2%, rgba(169, 184, 158, 0.18), transparent 24%),
+    #f7f3e9;
+}
+
+.assistant-mini {
+  height: 54rpx;
+  padding: 0 18rpx;
+  border-radius: 999rpx;
+  background: #18382e;
+  color: #fffdf7;
+  font-size: 19rpx;
+  line-height: 54rpx;
+}
+
+.wiki-hero {
+  position: relative;
+  margin-top: 24rpx;
+  padding: 34rpx 30rpx 26rpx;
+  overflow: hidden;
+  border-radius: 36rpx;
+  background: #18382e;
+  color: #fffdf7;
+  box-shadow: 0 26rpx 58rpx rgba(24, 56, 46, 0.2);
+}
+
+.wiki-hero::after {
+  position: absolute;
+  top: -120rpx;
+  right: -100rpx;
+  width: 330rpx;
+  height: 330rpx;
+  border: 1rpx solid rgba(255, 255, 255, 0.08);
+  border-radius: 50%;
+  content: "";
+}
+
+.hero-art {
+  position: absolute;
+  top: 20rpx;
+  right: 20rpx;
+  width: 250rpx;
+  height: 250rpx;
+}
+
+.hero-orbit {
+  position: absolute;
+  border: 1rpx solid rgba(242, 200, 91, 0.15);
+  border-radius: 50%;
+}
+
+.orbit-a {
+  top: 10rpx;
+  right: 10rpx;
+  width: 220rpx;
+  height: 220rpx;
+}
+
+.orbit-b {
+  top: 45rpx;
+  right: 45rpx;
+  width: 150rpx;
+  height: 150rpx;
+}
+
+.cow-mark {
+  position: absolute;
+  top: 72rpx;
+  right: 52rpx;
+  width: 138rpx;
+  height: 118rpx;
+}
+
+.cow-face {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 102rpx;
+  border: 3rpx solid #f2c85b;
+  border-radius: 48% 48% 42% 42%;
+  background: rgba(242, 200, 91, 0.04);
+}
+
+.horn {
+  position: absolute;
+  top: 0;
+  width: 38rpx;
+  height: 34rpx;
+  border: 3rpx solid #f2c85b;
+  border-bottom: 0;
+  border-radius: 50% 50% 0 0;
+}
+
+.horn-left {
+  left: 12rpx;
+  transform: rotate(-20deg);
+}
+
+.horn-right {
+  right: 12rpx;
+  transform: rotate(20deg);
+}
+
+.cow-eye {
+  position: absolute;
+  top: 34rpx;
+  width: 8rpx;
+  height: 8rpx;
+  border-radius: 50%;
+  background: #f2c85b;
+}
+
+.eye-left {
+  left: 36rpx;
+}
+
+.eye-right {
+  right: 36rpx;
+}
+
+.cow-nose {
+  position: absolute;
+  bottom: 22rpx;
+  left: 50%;
+  width: 40rpx;
+  height: 25rpx;
+  border: 2rpx solid rgba(242, 200, 91, 0.72);
+  border-radius: 45%;
+  transform: translateX(-50%);
+}
+
+.wiki-title {
+  position: relative;
+  z-index: 2;
+  margin-top: 13rpx;
+  font-family: "Songti SC", serif;
+  font-size: 54rpx;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -1rpx;
+}
+
+.wiki-intro {
+  position: relative;
+  z-index: 2;
+  width: 430rpx;
+  margin-top: 22rpx;
+  color: rgba(255, 253, 247, 0.54);
+  font-size: 21rpx;
+  line-height: 1.72;
+}
+
+.hero-footer {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 32rpx;
+  padding-top: 18rpx;
+  border-top: 1rpx solid rgba(255, 255, 255, 0.09);
+}
+
+.hero-count {
+  color: rgba(255, 253, 247, 0.48);
+  font-size: 18rpx;
+}
+
+.hero-count text {
+  margin-right: 5rpx;
+  color: #f2c85b;
+  font-family: "Songti SC", serif;
+  font-size: 27rpx;
+  font-weight: 700;
+}
+
+.hero-swipe {
+  color: rgba(255, 253, 247, 0.42);
+  font-size: 17rpx;
+  letter-spacing: 1rpx;
+}
+
+.category-tabs {
+  display: flex;
+  gap: 10rpx;
+  margin-top: 24rpx;
+  padding: 8rpx;
+  border: 1rpx solid rgba(24, 56, 46, 0.07);
+  border-radius: 24rpx;
+  background: rgba(255, 253, 247, 0.68);
+}
+
+.category-tab {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 92rpx;
+  border-radius: 18rpx;
+  color: #7a877f;
+  font-size: 21rpx;
+  transition: all 180ms ease;
+}
+
+.category-tab.active {
+  background: #18382e;
+  color: #fffdf7;
+  box-shadow: 0 9rpx 20rpx rgba(24, 56, 46, 0.16);
+}
+
+.tab-index {
+  margin-bottom: 2rpx;
+  color: #afb5af;
+  font-family: "Songti SC", serif;
+  font-size: 15rpx;
+}
+
+.category-tab.active .tab-index {
+  color: #f2c85b;
+}
+
+.category-intro {
+  display: flex;
+  align-items: flex-start;
+  gap: 14rpx;
+  margin-top: 14rpx;
+  padding: 0 6rpx;
+}
+
+.category-intro-label {
+  flex: 0 0 auto;
+  padding: 3rpx 10rpx;
+  border-radius: 7rpx;
+  background: #18382e;
+  color: #fffdf7;
+  font-size: 16rpx;
+}
+
+.category-intro-copy {
+  color: #7b8880;
+  font-size: 19rpx;
+  line-height: 1.6;
+}
+
+.price-guide {
+  display: flex;
+  align-items: flex-start;
+  gap: 12rpx;
+  margin-top: 13rpx;
+  padding: 15rpx 17rpx;
+  border: 1rpx solid rgba(217, 84, 61, 0.12);
+  border-radius: 17rpx;
+  background: #fcf0eb;
+  color: #8a5d53;
+  font-size: 18rpx;
+  line-height: 1.6;
+}
+
+.price-guide-mark {
+  display: flex;
+  flex: 0 0 30rpx;
+  align-items: center;
+  justify-content: center;
+  width: 30rpx;
+  height: 30rpx;
+  margin-top: 1rpx;
+  border-radius: 50%;
+  background: #d9543d;
+  color: #fff;
+  font-family: "Songti SC", serif;
+  font-size: 17rpx;
+  font-weight: 700;
+}
+
+.freshness-method {
+  display: flex;
+  align-items: stretch;
+  margin-top: 14rpx;
+  padding: 18rpx 12rpx;
+  border-radius: 22rpx;
+  background: #18382e;
+  color: #fffdf7;
+}
+
+.freshness-step {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+}
+
+.freshness-step-index {
+  color: #f2c85b;
+  font-family: "Songti SC", serif;
+  font-size: 15rpx;
+  font-weight: 700;
+}
+
+.freshness-step-name {
+  margin-top: 2rpx;
+  font-family: "Songti SC", serif;
+  font-size: 29rpx;
+  font-weight: 700;
+}
+
+.freshness-step-copy {
+  margin-top: 2rpx;
+  color: rgba(255, 253, 247, 0.5);
+  font-size: 15rpx;
+  white-space: nowrap;
+}
+
+.freshness-step-rule {
+  width: 1rpx;
+  margin: 6rpx 8rpx;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.knowledge-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14rpx;
+}
+
+.state-guide-heading {
+  margin-top: 24rpx;
+  padding: 24rpx 6rpx 8rpx;
+  border-top: 1rpx solid rgba(24, 56, 46, 0.1);
+}
+
+.state-guide-kicker {
+  color: #d9543d;
+  font-size: 15rpx;
+  font-weight: 700;
+  letter-spacing: 2rpx;
+}
+
+.state-guide-title {
+  margin-top: 5rpx;
+  font-family: "Songti SC", serif;
+  font-size: 31rpx;
+  font-weight: 700;
+}
+
+.state-guide-copy {
+  margin-top: 3rpx;
+  color: #87928a;
+  font-size: 18rpx;
+}
+
+.knowledge-card {
+  position: relative;
+  padding: 24rpx;
+  overflow: hidden;
+  border: 1rpx solid rgba(24, 56, 46, 0.08);
+  border-radius: 28rpx;
+  background: #fffdf7;
+  transition: all 220ms ease;
+}
+
+.knowledge-card.open {
+  box-shadow: 0 18rpx 42rpx rgba(35, 53, 43, 0.08);
+}
+
+.knowledge-card::before {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 6rpx;
+  background: #d9543d;
+  content: "";
+}
+
+.knowledge-card.dark::before {
+  background: #18382e;
+}
+
+.knowledge-card.yellow::before {
+  background: #f2c85b;
+}
+
+.knowledge-card.sage::before {
+  background: #91a983;
+}
+
+.knowledge-top {
+  display: flex;
+  align-items: flex-start;
+}
+
+.knowledge-number {
+  width: 55rpx;
+  padding-top: 2rpx;
+  color: #c5c8c1;
+  font-family: "Songti SC", serif;
+  font-size: 19rpx;
+  font-weight: 700;
+}
+
+.knowledge-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.knowledge-kicker {
+  color: #d9543d;
+  font-size: 16rpx;
+  font-weight: 600;
+  letter-spacing: 2rpx;
+}
+
+.knowledge-title-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 12rpx;
+  margin-top: 3rpx;
+}
+
+.knowledge-title {
+  font-family: "Songti SC", serif;
+  font-size: 34rpx;
+  font-weight: 700;
+}
+
+.knowledge-subtitle {
+  color: #9aa29c;
+  font-size: 16rpx;
+  letter-spacing: 1rpx;
+}
+
+.expand-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44rpx;
+  height: 44rpx;
+  border-radius: 50%;
+  background: #f2eee5;
+  color: #758077;
+  font-size: 25rpx;
+}
+
+.knowledge-summary {
+  margin: 15rpx 0 0 55rpx;
+  color: #647269;
+  font-size: 21rpx;
+  line-height: 1.65;
+}
+
+.knowledge-price-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 9rpx;
+  margin: 13rpx 0 0 55rpx;
+}
+
+.knowledge-price {
+  padding: 4rpx 10rpx;
+  border-radius: 7rpx;
+  background: #18382e;
+  color: #f2c85b;
+  font-family: "Songti SC", serif;
+  font-size: 19rpx;
+  font-weight: 700;
+}
+
+.knowledge-price-mode {
+  color: #9a847b;
+  font-size: 16rpx;
+}
+
+.chaoshan-alias-row {
+  display: flex;
+  align-items: center;
+  margin: 13rpx 0 0 55rpx;
+  padding: 10rpx 12rpx;
+  border-radius: 12rpx;
+  background: #f5efe4;
+}
+
+.chaoshan-alias-label {
+  flex: 0 0 auto;
+  margin-right: 10rpx;
+  padding: 2rpx 8rpx;
+  border-radius: 5rpx;
+  background: #d9543d;
+  color: #fffdf7;
+  font-size: 15rpx;
+}
+
+.chaoshan-alias-name {
+  flex: 1;
+  color: #645348;
+  font-size: 18rpx;
+  font-weight: 600;
+}
+
+.chaoshan-alias-arrow {
+  color: #a38d7d;
+  font-size: 21rpx;
+}
+
+.knowledge-detail {
+  margin: 20rpx 0 0 55rpx;
+  padding-top: 18rpx;
+  border-top: 1rpx solid rgba(24, 56, 46, 0.07);
+}
+
+.section-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 14rpx;
+  margin-bottom: 14rpx;
+}
+
+.section-label {
+  flex: 0 0 64rpx;
+  padding-top: 2rpx;
+  color: #d9543d;
+  font-size: 17rpx;
+  font-weight: 600;
+  letter-spacing: 1rpx;
+}
+
+.section-copy {
+  flex: 1;
+  color: #42594c;
+  font-size: 20rpx;
+  line-height: 1.68;
+}
+
+.price-note-card {
+  margin-top: 18rpx;
+  padding: 17rpx;
+  border: 1rpx solid rgba(24, 56, 46, 0.07);
+  border-radius: 18rpx;
+  background: #f7f3ea;
+}
+
+.price-note-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 9rpx;
+  color: #18382e;
+  font-size: 20rpx;
+  font-weight: 600;
+}
+
+.price-note-mode {
+  color: #9a8177;
+  font-size: 15rpx;
+  font-weight: 400;
+}
+
+.price-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 11rpx 0;
+  border-top: 1rpx solid rgba(24, 56, 46, 0.07);
+}
+
+.price-source {
+  flex: 1;
+  color: #51655a;
+  font-size: 18rpx;
+}
+
+.price-spec {
+  margin-top: 2rpx;
+  color: #9aa29b;
+  font-size: 15rpx;
+}
+
+.price-value {
+  margin-left: 18rpx;
+  color: #b6402e;
+  font-family: "Songti SC", serif;
+  font-size: 20rpx;
+  font-weight: 700;
+  text-align: right;
+}
+
+.price-note-copy {
+  margin-top: 9rpx;
+  padding-top: 10rpx;
+  border-top: 1rpx solid rgba(24, 56, 46, 0.07);
+  color: #7b8780;
+  font-size: 17rpx;
+  line-height: 1.6;
+}
+
+.chaoshan-reference {
+  margin-top: 18rpx;
+  padding: 18rpx;
+  border: 1rpx solid rgba(217, 84, 61, 0.14);
+  border-radius: 18rpx;
+  background: #fdf1eb;
+}
+
+.chaoshan-reference-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14rpx;
+}
+
+.chaoshan-reference-kicker {
+  color: #d9543d;
+  font-size: 14rpx;
+  font-weight: 700;
+  letter-spacing: 2rpx;
+}
+
+.chaoshan-reference-title {
+  margin-top: 4rpx;
+  color: #3f5348;
+  font-size: 21rpx;
+  font-weight: 600;
+}
+
+.chaoshan-reference-price {
+  flex: 0 0 auto;
+  padding: 5rpx 9rpx;
+  border-radius: 7rpx;
+  background: #18382e;
+  color: #f2c85b;
+  font-family: "Songti SC", serif;
+  font-size: 18rpx;
+  font-weight: 700;
+}
+
+.chaoshan-reference-relation {
+  margin-top: 13rpx;
+  color: #62574f;
+  font-size: 19rpx;
+  line-height: 1.7;
+}
+
+.chaoshan-reference-note {
+  margin-top: 9rpx;
+  padding-top: 9rpx;
+  border-top: 1rpx solid rgba(217, 84, 61, 0.12);
+  color: #8b7469;
+  font-size: 17rpx;
+  line-height: 1.6;
+}
+
+.fact-row {
+  display: flex;
+  align-items: center;
+  gap: 10rpx;
+  margin-bottom: 9rpx;
+  color: #3e5649;
+  font-size: 20rpx;
+}
+
+.fact-dot {
+  width: 6rpx;
+  height: 6rpx;
+  border-radius: 50%;
+  background: #d9543d;
+}
+
+.detail-note {
+  margin-top: 16rpx;
+  padding: 13rpx 16rpx;
+  border-radius: 14rpx;
+  background: #f5f1e8;
+  color: #77837b;
+  font-size: 18rpx;
+  line-height: 1.55;
+}
+
+.note-label {
+  margin-right: 9rpx;
+  color: #18382e;
+  font-weight: 600;
+}
+
+.source-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 10rpx;
+  margin: 26rpx 6rpx 10rpx;
+  color: #939b95;
+  font-size: 18rpx;
+  line-height: 1.6;
+}
+
+.source-mark {
+  display: flex;
+  flex: 0 0 28rpx;
+  align-items: center;
+  justify-content: center;
+  width: 28rpx;
+  height: 28rpx;
+  margin-top: 1rpx;
+  border: 1rpx solid #aeb4af;
+  border-radius: 50%;
+  font-family: "Songti SC", serif;
+  font-size: 15rpx;
+}
