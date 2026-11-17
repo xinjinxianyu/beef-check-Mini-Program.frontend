@@ -2,7 +2,8 @@
 >
 > 作品说明文档：[第九届传智杯-AI小程序赛道-识牛.docx](deliverables/第九届传智杯-AI小程序赛道-识牛.docx)  
 > 演示录屏脚本：[识牛-演示录屏脚本.md](deliverables/识牛-演示录屏脚本.md)  
-> 架构图：[architecture.png](artifacts/competition_assets/architecture.png) · [flow.png](artifacts/competition_assets/flow.png)
+> 架构图：[architecture.png](artifacts/competition_assets/architecture.png) · [flow.png](artifacts/competition_assets/flow.png)  
+> 数据集来源：[DATASETS.md](DATASETS.md)
 
 # 识牛 · 微信小程序前端
 
@@ -18,6 +19,15 @@
 - 历史页：本地记录、时间展示、删除和清空，所有记录仅保存在当前设备。
 - 登录页：游客模式、微信 `wx.login` + `wx.getUserProfile` 快捷登录。
 - 个人中心：头像昵称、识别次数、本地存储状态、缓存清理和隐私说明。
+
+## 数据集来源
+
+本项目的模型训练使用两个公开数据集：
+
+- **LOCBEEF**：3,268 张牛肉图片，用于新鲜度 `fresh/rotten` 分类，DOI `10.17632/7b67ynzr6k.1`。
+- **Retail Beef Cuts Dataset**：7 类零售牛肉切块，约 1,974 个文件、514.99 MB，用于部位识别；项目最终保留 5 类，去除 `Liver` 与 `Roast Beef`。
+
+原始图片没有随仓库提交：两份数据解压后合计超过 5 GB，且 Kaggle 页面标注的许可为 **Not specified**。来源链接、许可说明、下载方式和目录放置见 [DATASETS.md](DATASETS.md)，机器可读清单见 [dataset_manifest.json](dataset_manifest.json)。
 
 ## 运行
 

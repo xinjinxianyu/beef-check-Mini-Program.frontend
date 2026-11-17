@@ -1,0 +1,85 @@
+{
+  "generated_at": "2026-11-17",
+  "datasets": [
+    {
+      "id": "locbeef",
+      "name": "LOCBEEF: Beef Quality Image Dataset for Deep Learning Models",
+      "source_url": "https://data.mendeley.com/datasets/7b67ynzr6k/1",
+      "doi": "10.17632/7b67ynzr6k.1",
+      "authors": [
+        "Tri Mulya Dharma",
+        "Ramzi Adriman",
+        "Khairun Saddami"
+      ],
+      "published": "2022-11-30",
+      "task": "freshness classification",
+      "classes": [
+        "fresh",
+        "rotten"
+      ],
+      "total_images": 3268,
+      "splits": {
+        "train": {
+          "fresh": 1144,
+          "rotten": 1144,
+          "total": 2288
+        },
+        "test": {
+          "fresh": 490,
+          "rotten": 490,
+          "total": 980
+        }
+      },
+      "local_path": "yolo-program/beef_freshness",
+      "license": "See the Mendeley Data page; verify before redistribution",
+      "redistributed_in_repo": false
+    },
+    {
+      "id": "retail-beef-cuts",
+      "name": "Retail Beef Cuts Dataset",
+      "source_url": "https://www.kaggle.com/datasets/abdallahabuzaid/retail-beef-cuts-dataset",
+      "author": "Abdallah Abuzaid",
+      "task": "beef part detection and classification",
+      "source_format": {
+        "files": 1974,
+        "size_mb": 514.99,
+        "classes": [
+          "Beef Chuck",
+          "Beef Fillet",
+          "Beef Flank",
+          "Beef Round",
+          "Strip-Lion",
+          "Liver",
+          "Roast Beef"
+        ]
+      },
+      "retained_classes": [
+        "beef_chuck",
+        "beef_fillet",
+        "beef_flank",
+        "beef_round",
+        "strip_loin"
+      ],
+      "removed_classes": [
+        "liver",
+        "roast_beef"
+      ],
+      "detection_dataset": {
+        "path": "yolo-program/datasets/beef_det",
+        "total_images": 1607,
+        "splits": {
+          "train": 998,
+          "val": 316,
+          "test": 293
+        }
+      },
+      "local_paths": [
+        "yolo-program/beef_part/Meat_Dataset",
+        "yolo-program/beef_part/NA_Meat_Dataset"
+      ],
+      "license": "Not specified (Kaggle)",
+      "redistributed_in_repo": false
+    }
+  ],
+  "note": "Raw images, training weights and run outputs are intentionally excluded from this repository. Download the datasets from their original sources and follow the applicable terms."
+}
